@@ -1,7 +1,9 @@
 import React from "react";
 
+import classes from './Sections.module.css';
+
 const Statistics = () => {
-    return <div>
+    return <div className={classes.sectionWrapper}>
         stats
     </div>
 }

@@ -1,7 +1,9 @@
 import React from "react";
 
+import classes from './Sections.module.css';
+
 const Devices = () => {
-    return <div>
+    return <div className={classes.sectionWrapper}>
         devs
     </div>
 }
