@@ -50,7 +50,7 @@ const SideBar = (props) => {
           <span className={classes.linkText}>Statistiky</span>
         </Link>
       </div>
-      <Button variant="primary" className={classes.button} active>
+      <Button variant="primary" className={classes.button} active >
         <RiLogoutBoxLine size={20} />
         <span className={classes.linkText}>Odhlásit se</span>
       </Button>
