@@ -6,6 +6,7 @@ import classes from "./Sections.module.css";
 import { FaTemperatureHigh } from "react-icons/fa";
 import { WiHumidity } from "react-icons/wi";
 import StatisticBubble from "../ui/StatisticBubble";
+import RoomBubble from "../ui/RoomBubble";
 
 const Home = () => {
   return (
@@ -55,20 +56,27 @@ const Home = () => {
 
         <Row className="h-25 pt-2">
           <Col className={classes.bubbleWrapper}>
-            <ValueBubble valueType="Vlhkost" icon={<WiHumidity size={50} />} />
+            <RoomBubble valueType="Chodba" />
           </Col>
           <Col className={classes.bubbleWrapper}>
-            <ValueBubble valueType="Vlhkost" icon={<WiHumidity size={50} />} />
+            <RoomBubble valueType="Obývák" />
+          </Col>
+          <Col className={classes.bubbleWrapper}>
+            <RoomBubble valueType="Kuchyně" />
+          </Col>
+          <Col className={classes.bubbleWrapper}>
+            <RoomBubble valueType="WC" />
+          </Col>
+          <Col className={classes.bubbleWrapper}>
+            <RoomBubble valueType="Ložnice" />
           </Col>
         </Row>
 
         <Row className="h-50 pt-3">
           <Col className={classes.bubbleWrapper}>
-            <StatisticBubble />
+            <StatisticBubble valueType="Spotřeba vody a elektřiny"/>
           </Col>
-          <Col className={classes.bubbleWrapper}>
-            <StatisticBubble />
-          </Col>
+
         </Row>
       </div>
     </div>
