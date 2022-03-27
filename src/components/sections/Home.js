@@ -8,6 +8,51 @@ import { WiHumidity } from "react-icons/wi";
 import StatisticBubble from "../ui/StatisticBubble";
 import RoomBubble from "../ui/RoomBubble";
 
+const data = [
+  {
+    name: "Po",
+    voda: 4000,
+    elektrina: 2400,
+    amt: 2400,
+  },
+  {
+    name: "Út",
+    voda: 3000,
+    elektrina: 1398,
+    amt: 2210,
+  },
+  {
+    name: "St",
+    voda: 2000,
+    elektrina: 9800,
+    amt: 2290,
+  },
+  {
+    name: "Čt",
+    voda: 2780,
+    elektrina: 3908,
+    amt: 2000,
+  },
+  {
+    name: "Pá",
+    voda: 1890,
+    elektrina: 4800,
+    amt: 2181,
+  },
+  {
+    name: "So",
+    voda: 2390,
+    elektrina: 3800,
+    amt: 2500,
+  },
+  {
+    name: "Ne",
+    voda: 3490,
+    elektrina: 4300,
+    amt: 2100,
+  },
+];
+
 const Home = () => {
   return (
     <div className={classes.sectionWrapper}>
@@ -74,9 +119,8 @@ const Home = () => {
 
         <Row className="h-50 pt-3">
           <Col className={classes.bubbleWrapper}>
-            <StatisticBubble valueType="Spotřeba vody a elektřiny"/>
+            <StatisticBubble data={data} valueType="Spotřeba vody a elektřiny"/>
           </Col>
-
         </Row>
       </div>
     </div>
