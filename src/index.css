@@ -2,11 +2,11 @@
 
 :root {
 
-    background-color: #f0f0f0;
+    background-color: #dfdfdf;
     --color-blue: #3B0AAE;
     --color-orange: #FF6700;
     --color-platinum: #f3f3f3;
     --font-family:  'Montserrat', sans-serif;
     --color-orange-hover: #ff6600b9;
-    --color-light-text: rgb(24, 24, 24);
+    --color-light-text: rgba(24, 24, 24, 0.849);
 }

@@ -2,33 +2,62 @@
     height: 100%;
     border-radius: 28px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    padding: 1rem;
+    background-color: #fff;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    padding: 1.5rem;
+    flex-direction: column;
 }
 
-.bubbleIconWrapper {
-    height: 80%;
-    width: 80%;
+.titleWrapper {
     display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.bubbleTitle {
+    justify-content: space-between;
     width: 100%;
 }
 
-.bubbleTitle h6 {
+.titleWrapper h6 {
     font-weight: bold;
+    color: var(--color-light-text);
 }
 
 .bubbleContent {
-    height: 100%;
+    display: flex;
     width: 100%;
+    align-items: center;
+    height: 100%;
+}
+
+.leftSide {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconWrapper {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 9px solid var(--color-orange);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
 }
+
+.rightSide {
+    width: 55%;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--color-light-text);
+    text-align: center;
+}
+
+
+.valueText {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #000;
+}
+
+
