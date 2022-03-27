@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import classes from "./Sections.module.css";
 
 const Home = () => {
@@ -17,11 +17,29 @@ const Home = () => {
       </div>
 
       <div className={classes.contentWrapper}>
-        <Row className="h-50" style={{backgroundColor: 'var(--color-platinum)'}}>
-          <Col>1 of 2</Col>
+        <Row className="h-25 pb-2">
+          <Col className={classes.bubbleWrapper}>
+            <div className={classes.bubble}>d</div>
+          </Col>
+          <Col className={classes.bubbleWrapper}>
+            <div className={classes.bubble}>d</div>
+          </Col>
+          <Col  className={classes.bubbleWrapper}>
+            <div className={classes.bubble}>d</div>
+          </Col>
         </Row>
-        <Row className="h-50" style={{backgroundColor: 'var(--color-platinum)'}}>
-          <Col>1 of 2</Col>
+        <Row className="h-25 pt-2">
+          <Col  className={classes.bubbleWrapper}>
+            <div className={classes.bubble}>d</div>
+          </Col>
+          <Col  className={classes.bubbleWrapper}>
+            <div className={classes.bubble}>d</div>
+          </Col>
+        </Row>
+        <Row className="h-50 pt-3">
+          <Col  className={classes.bubbleWrapper}>
+            <div className={classes.bubble}>d</div>
+          </Col>
         </Row>
       </div>
     </div>
