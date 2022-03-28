@@ -86,6 +86,16 @@ const Home = () => {
               unit={"%"}
               value={51}
               customStyle={{ borderColor: "var(--color-blue)" }}
+              darkTheme={true}
+            />
+          </Col>
+          <Col className={classes.bubbleWrapper}>
+            <ValueBubble
+              valueType="Oxid uhličitý"
+              icon={<span style={{fontWeight: 'bold', fontSize: '1.3rem'}}>CO2</span>}
+              unit={"ppm"}
+              value={1283}
+              customStyle={{ borderColor: "var(--color-light-text)" }}
             />
           </Col>
           <Col className={classes.bubbleWrapper}>
