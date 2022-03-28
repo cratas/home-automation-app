@@ -3,6 +3,8 @@ import { Row, Col } from "react-bootstrap";
 import ValueBubble from "../ui/ValueBubble";
 import classes from "./Sections.module.css";
 
+
+
 import { FaTemperatureHigh } from "react-icons/fa";
 import { WiHumidity } from "react-icons/wi";
 import StatisticBubble from "../ui/StatisticBubble";
@@ -52,8 +54,12 @@ const data = [
     amt: 2100,
   },
 ];
+var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 const Home = () => {
+  const date = new Date().toLocaleDateString("cs-CZ", options);
+
+  console.log(date)
   return (
     <div className={classes.sectionWrapper}>
       <div className={classes.header}>
@@ -63,7 +69,7 @@ const Home = () => {
           </span>
         </div>
         <div className={classes.date}>
-          <span style={{ fontWeight: "bold" }}>Sobota</span>, 24 Duben 2022
+          <span style={{ fontWeight: "bold" }}>{date}</span>
         </div>
       </div>
 
