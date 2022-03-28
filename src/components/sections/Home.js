@@ -3,10 +3,9 @@ import { Row, Col } from "react-bootstrap";
 import ValueBubble from "../ui/ValueBubble";
 import classes from "./Sections.module.css";
 
-
-
 import { FaTemperatureHigh } from "react-icons/fa";
 import { WiHumidity } from "react-icons/wi";
+
 import StatisticBubble from "../ui/StatisticBubble";
 import RoomBubble from "../ui/RoomBubble";
 
@@ -74,8 +73,8 @@ const Home = () => {
       </div>
 
       <div className={classes.contentWrapper}>
-        <Row className="h-25 pb-2">
-          <Col className={classes.bubbleWrapper}>
+        <Row className={`h-25 pb-2 ${classes.rowStyle}`}>
+          <Col className={`${classes.bubbleWrapper}`}>
             <ValueBubble
               valueType="Teplota"
               icon={<FaTemperatureHigh size={30} />}
@@ -115,7 +114,7 @@ const Home = () => {
           </Col>
         </Row>
 
-        <Row className="h-25 pt-2">
+        <Row className={`h-25 pt-2 ${classes.rowStyle}`}>
           <Col className={classes.bubbleWrapper}>
             <RoomBubble valueType="Chodba" />
           </Col>
@@ -133,7 +132,7 @@ const Home = () => {
           </Col>
         </Row>
 
-        <Row className="h-50 pt-3">
+        <Row className={`h-50 pt-3 ${classes.rowStyle}`}>
           <Col className={classes.bubbleWrapper}>
             <StatisticBubble data={data} valueType="Spotřeba vody a elektřiny"/>
           </Col>

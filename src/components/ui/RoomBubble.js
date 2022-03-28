@@ -9,6 +9,9 @@ import {
 } from "react-icons/md";
 
 const RoomBubble = (props) => {
+
+
+  
   return (
     <div className={classes.bubble}>
       <div className={classes.titleWrapper}>
@@ -36,7 +39,7 @@ const RoomBubble = (props) => {
           </h6>
         </div>
         <div className={classes.statusWrapper}>
-          <MdReportGmailerrorred size={24} style={{ color: "red" }} />
+          <MdReportGmailerrorred size={24} style={{ color: "red", marginTop: '-3px'}} />
           <h6>
             <span style={{ fontWeight: "bold" }}>0</span> neodpovídá
           </h6>

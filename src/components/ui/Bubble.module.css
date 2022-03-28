@@ -1,98 +1,114 @@
 .bubble {
-    height: 100%;
-    border-radius: 28px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-    padding: 1rem;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  height: 100%;
+  border-radius: 28px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  padding: 1rem;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-
 .titleWrapper {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .titleWrapper h6 {
-    font-weight: bold;
-    color: var(--color-light-text);
+  font-weight: bold;
+  color: var(--color-light-text);
 }
 
 .bubbleContent {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .leftSide {
-    width: 45%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .iconWrapper {
-    width: 6rem;
-    height: 6rem;
-    border-radius: 40%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    color: var(--color-orange);
+  width: 6rem;
+  height: 6rem;
+  border-radius: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  color: var(--color-orange);
 }
 
-
 .rightSide {
-    width: 55%;
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--color-light-text);
-    text-align: center;
+  width: 55%;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-light-text);
+  text-align: center;
 }
 
 .valueText {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #000;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #000;
 }
-
 
 .darkBubble {
-    background-color: var(--color-blue);
-    color: #fff;
+  background-color: var(--color-blue);
+  color: #fff;
 }
 
-.darkBubble .titleWrapper h6{
-    color: #fff;
+.darkBubble .titleWrapper h6 {
+  color: #fff;
 }
 
 .darkBubble .iconWrapper {
-    /* background-color: var(--color-orange); */
-    background-color: var(--color-blue);
-    border: 5px solid #fff!important;
-    color: #fff;
+  /* background-color: var(--color-orange); */
+  background-color: var(--color-blue);
+  border: 5px solid #fff !important;
+  color: #fff;
 }
 
-
 .darkBubble .rightSide {
-    color: #fff;
+  color: #fff;
 }
 
 .darkBubble .valueText {
-    color: #fff;
+  color: #fff;
 }
 
-
 .statusWrapper {
+  width: 100%;
+  /* background-color: red; */
+  padding: 0.3rem 0.1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 482px) {
+  .contentWrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
     width: 100%;
-    /* background-color: red; */
-    padding: 0.3rem 0.1rem;
-    display: flex;
-    justify-content: space-between;
+    border-radius: 0;
+  }
+
+  .valueText {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+  }
+  
+  .hidden {
+      display: none;
+  }
 }
