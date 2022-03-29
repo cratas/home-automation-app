@@ -3,7 +3,13 @@ import { React, useState, useRef } from "react";
 import classes from "./Sections.module.css";
 import { Carousel, Row, Button } from "react-bootstrap";
 
-import ValueBubble from "./../ui/ValueBubble.js";
+import Room from "./Room";
+
+
+import {
+  MdArrowBackIos,
+  MdArrowForwardIos,
+} from "react-icons/md";
 
 const Rooms = () => {
   const [index, setIndex] = useState(0);
@@ -23,40 +29,46 @@ const Rooms = () => {
   return (
     <div className={classes.sectionWrapper}>
       <div className={classes.header}>
-        <h4>
+        <h5>
           <strong>Přehled místností v domě</strong>
-        </h4>
+        </h5>
+
+        <div>
+          <MdArrowBackIos
+            onClick={onPrevClick}
+            size={30}
+            className={classes.roomIcon}
+          />
+          <strong>Kuchyně</strong>
+          <MdArrowForwardIos
+            onClick={onNextClick}
+            size={30}
+            className={classes.roomIcon}
+          />
+        </div>
       </div>
 
       <div className={classes.contentWrapper}>
-        <Button variant="primary" onClick={onPrevClick}>
-          Previous
-        </Button>
-        <Button variant="primary" onClick={onNextClick}>
-          Next
-        </Button>
         <Carousel
           activeIndex={index}
           onSelect={handleSelect}
           variant="dark"
           indicators={false}
+          interval={null}
           ref={ref}
           controls={false}
+          style={{
+            display: "flex",
+            alignItems: "space-around",
+            height: "100%",
+          }}
+          
         >
-          <Carousel.Item>
-            <div className={classes.roomWrapper}>
-              <Row className="h-25" style={{ backgroundColor: "red" }}></Row>
-            </div>
+          <Carousel.Item style={{ height: "100%" }}> 
+            <Room />
           </Carousel.Item>
-          <Carousel.Item>
-            <div className={classes.roomWrapper}>
-              <Row className="h-25" style={{ backgroundColor: "red" }}>
-                sdf
-              </Row>
-              <Row className="h-25" style={{ backgroundColor: "red" }}>
-                sdf
-              </Row>
-            </div>
+          <Carousel.Item style={{ height: "100%" }}>
+            <Room />
           </Carousel.Item>
         </Carousel>
       </div>

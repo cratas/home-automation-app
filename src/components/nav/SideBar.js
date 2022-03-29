@@ -40,12 +40,7 @@ const SideBar = (props) => {
           <span className={classes.linkText}>Místnosti</span>
         </Link>
 
-        <Link isActive={isDevicesActive} onClick={changeSection} id="3">
-          <MdOutlineEdgesensorLow size={20} className={classes.icon}/>
-          <span className={classes.linkText}>Senzory</span>
-        </Link>
-
-        <Link isActive={isStatisticsActive} onClick={changeSection} id="4">
+        <Link isActive={isStatisticsActive} onClick={changeSection} id="3">
           <MdQueryStats size={20} className={classes.icon} />
           <span className={classes.linkText}>Statistiky</span>
         </Link>

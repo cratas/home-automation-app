@@ -20,8 +20,7 @@ const Content = () => {
 
       {section === 1 && <Home /> }
       {section === 2 && <Rooms /> }
-      {section === 3 && <Devices /> }
-      {section === 4 && <Statistics /> }
+      {section === 3 && <Statistics /> }
     </div>
   );
 };

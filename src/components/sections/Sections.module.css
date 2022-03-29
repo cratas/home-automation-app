@@ -20,11 +20,11 @@
   color: var(--color-light-text);
 }
 
-/* .rowStyle {
-  flex-wrap: nowrap;
-  overflow-y: scroll;
-  overflow-x: auto;
-} */
+.rowStyle {
+  display: flex;
+  align-items: center;
+  /* margin: 0.1rem 0; */
+}
 
 .name {
   font-size: 1.2rem;
@@ -42,9 +42,19 @@
   height: 100%;
 }
 
+/* ROOM SECTION */
+
 .roomWrapper {
-  height: 84vh;
+  height: 100%;
 }
+
+.roomIcon {
+  cursor: pointer;
+  margin: 0 0.5rem;
+  margin-left: 0.7rem;
+  color: var(--color-orange);
+}
+
 
 @media only screen and (max-width: 482px) {
   .sectionWrapper {

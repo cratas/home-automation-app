@@ -2,7 +2,7 @@
   height: 100%;
   border-radius: 28px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
-    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
   padding: 1rem;
   background-color: #fff;
   display: flex;
@@ -92,6 +92,19 @@
   display: flex;
   justify-content: space-between;
 }
+
+.activeDevice {
+  background-color: rgba(102, 184, 136, 0.5);
+}
+
+.notActiveDevice {
+  background-color: rgb(202, 202, 202)
+}
+
+.errorDevice {
+  background-color: rgba(133, 41, 41, 0.445);
+}
+
 
 @media only screen and (max-width: 482px) {
   .contentWrapper {

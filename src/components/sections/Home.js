@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import ValueBubble from "../ui/ValueBubble";
 import classes from "./Sections.module.css";
+import Carousel from "react-grid-carousel";
 
 import { FaTemperatureHigh } from "react-icons/fa";
 import { WiHumidity } from "react-icons/wi";
@@ -53,18 +54,23 @@ const data = [
     amt: 2100,
   },
 ];
-var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+var options = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
 
 const Home = () => {
   const date = new Date().toLocaleDateString("cs-CZ", options);
 
-  console.log(date)
+  console.log(date);
   return (
     <div className={classes.sectionWrapper}>
       <div className={classes.header}>
         <div className={classes.profile}>
           <span className={classes.name}>
-            Vítejte, <span style={{ fontWeight: "bold" }}>Adame!</span>
+            Vítejte, <span style={{ fontWeight: "bold" }}>Petře!</span>
           </span>
         </div>
         <div className={classes.date}>
@@ -72,8 +78,8 @@ const Home = () => {
         </div>
       </div>
 
-      <div className={classes.contentWrapper}>
-        <Row className={`h-25 pb-2 ${classes.rowStyle}`}>
+      <div className={classes.contentWrapper} style={{padding: '0.45rem'}}>
+        <Row className={`h-25 ${classes.rowStyle} pb-1`}>
           <Col className={`${classes.bubbleWrapper}`}>
             <ValueBubble
               valueType="Teplota"
@@ -97,7 +103,11 @@ const Home = () => {
           <Col className={classes.bubbleWrapper}>
             <ValueBubble
               valueType="Oxid uhličitý"
-              icon={<span style={{fontWeight: 'bold', fontSize: '1.3rem'}}>CO2</span>}
+              icon={
+                <span style={{ fontWeight: "bold", fontSize: "1.3rem" }}>
+                  CO2
+                </span>
+              }
               unit={"ppm"}
               value={1283}
               customStyle={{ borderColor: "var(--color-light-text)" }}
@@ -106,7 +116,11 @@ const Home = () => {
           <Col className={classes.bubbleWrapper}>
             <ValueBubble
               valueType="Oxid uhličitý"
-              icon={<span style={{fontWeight: 'bold', fontSize: '1.3rem'}}>CO2</span>}
+              icon={
+                <span style={{ fontWeight: "bold", fontSize: "1.3rem" }}>
+                  CO2
+                </span>
+              }
               unit={"ppm"}
               value={1283}
               customStyle={{ borderColor: "var(--color-light-text)" }}
@@ -114,27 +128,32 @@ const Home = () => {
           </Col>
         </Row>
 
-        <Row className={`h-25 pt-2 ${classes.rowStyle}`}>
-          <Col className={classes.bubbleWrapper}>
-            <RoomBubble valueType="Chodba" />
-          </Col>
-          <Col className={classes.bubbleWrapper}>
-            <RoomBubble valueType="Obývák" />
-          </Col>
-          <Col className={classes.bubbleWrapper}>
-            <RoomBubble valueType="Kuchyně" />
-          </Col>
-          <Col className={classes.bubbleWrapper}>
-            <RoomBubble valueType="WC" />
-          </Col>
-          <Col className={classes.bubbleWrapper}>
-            <RoomBubble valueType="Ložnice" />
-          </Col>
+        <Row className={`h-25 ${classes.rowStyle}`}style={{ padding: "1rem 0.3rem" }} >
+          <Carousel cols={4} rows={1} gap={17} loop={true} >
+            <Carousel.Item>
+              <RoomBubble valueType="Chodba" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <RoomBubble valueType="Obývák" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <RoomBubble valueType="Kuchyně" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <RoomBubble valueType="WC" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <RoomBubble valueType="Ložnice" />
+            </Carousel.Item>
+          </Carousel>
         </Row>
 
-        <Row className={`h-50 pt-3 ${classes.rowStyle}`}>
+        <Row className={`h-50 ${classes.rowStyle} pt-2`}>
           <Col className={classes.bubbleWrapper}>
-            <StatisticBubble data={data} valueType="Spotřeba vody a elektřiny"/>
+            <StatisticBubble
+              data={data}
+              valueType="Spotřeba vody a elektřiny"
+            />
           </Col>
         </Row>
       </div>
