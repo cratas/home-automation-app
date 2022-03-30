@@ -6,9 +6,10 @@ import { Button } from "react-bootstrap";
 
 import { RiHomeWifiLine } from "react-icons/ri";
 import { MdQueryStats } from "react-icons/md";
-import { MdOutlineEdgesensorLow, MdOutlineSpaceDashboard } from "react-icons/md";
+import {  MdOutlineSpaceDashboard } from "react-icons/md";
 import { SiHomeassistant } from "react-icons/si";
 import { RiLogoutBoxLine } from "react-icons/ri";
+import { BiExport } from "react-icons/bi";
 
 import Link from "./Link";
 
@@ -20,8 +21,8 @@ const SideBar = (props) => {
 
   const isHomeActive = props.currentSection === 1 ? true : false;
   const isRoomsActive = props.currentSection === 2 ? true : false;
-  const isDevicesActive = props.currentSection === 3 ? true : false;
-  const isStatisticsActive = props.currentSection === 4 ? true : false;
+  const isStatisticsActive = props.currentSection === 3 ? true : false;
+  const isExportActive = props.currentSection === 4 ? true : false;
 
   return (
     <div className={`${classes.sideBar}`}>
@@ -43,6 +44,11 @@ const SideBar = (props) => {
         <Link isActive={isStatisticsActive} onClick={changeSection} id="3">
           <MdQueryStats size={20} className={classes.icon} />
           <span className={classes.linkText}>Statistiky</span>
+        </Link>
+
+        <Link isActive={isExportActive} onClick={changeSection} id="4">
+          <BiExport size={20} className={classes.icon} />
+          <span className={classes.linkText}>Export</span>
         </Link>
       </div>
       <Button variant="primary" className={classes.button} active >

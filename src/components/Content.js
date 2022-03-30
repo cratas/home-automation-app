@@ -5,6 +5,7 @@ import Home from "./sections/Home";
 import classes from "./Content.module.css";
 import Rooms from "./sections/Rooms";
 import Statistics from "./sections/Statistics";
+import Export from "./sections/Export";
 
 const Content = () => {
   const [section, setSection] = useState(1);
@@ -20,6 +21,8 @@ const Content = () => {
       {section === 1 && <Home /> }
       {section === 2 && <Rooms /> }
       {section === 3 && <Statistics /> }
+      {section === 4 && <Export /> }
+
     </div>
   );
 };
