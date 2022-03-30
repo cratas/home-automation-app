@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Spinner } from "react-bootstrap";
 import ValueBubble from "../ui/ValueBubble";
 import classes from "./Sections.module.css";
 import Carousel from "react-grid-carousel";
@@ -15,6 +15,7 @@ import axios from "axios";
 const Home = () => {
   const date = new Date().toLocaleDateString("cs-CZ", options);
   const [loadedData, setLoadedData] = useState({ data: [] });
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     let incomingData;
@@ -23,20 +24,32 @@ const Home = () => {
       .get("http://localhost:8000/api/dashboard/")
       .then((res) => {
         incomingData = res.data;
-        setLoadedData({ data: incomingData});
+        setLoadedData({ data: incomingData });
+        setIsLoaded(true);
       })
       .catch((err) => {
         "error";
       });
   }, []);
 
-  const roomsList = loadedData.data.rooms?.sort((a, b) => b.error_count - a.error_count).map((room) => (
-    <Carousel.Item>
-      <RoomBubble valueType={room.name} activeCount={room.active_count} nonActiveCount={room.non_active_count} errorCount={room.error_count}/>
-    </Carousel.Item>
-  ));
+  const roomsList = loadedData.data.rooms
+    ?.sort((a, b) => b.error_count - a.error_count)
+    .map((room) => (
+      <Carousel.Item>
+        <RoomBubble
+          valueType={room.name}
+          activeCount={room.active_count}
+          nonActiveCount={room.non_active_count}
+          errorCount={room.error_count}
+        />
+      </Carousel.Item>
+    ));
 
-  return (
+  return !isLoaded ? (
+    <div className={`${classes.sectionWrapper} ${classes.spinnerWrapper}`}>
+      <Spinner animation="border" />
+    </div>
+  ) : (
     <div className={classes.sectionWrapper}>
       <div className={classes.header}>
         <div className={classes.profile}>
@@ -166,6 +179,7 @@ const data = [
     amt: 2100,
   },
 ];
+
 var options = {
   weekday: "long",
   year: "numeric",

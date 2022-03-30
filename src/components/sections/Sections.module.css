@@ -8,6 +8,12 @@
   font-family: var(--font-family);
 }
 
+.spinnerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .header {
   display: flex;
   justify-content: space-between;

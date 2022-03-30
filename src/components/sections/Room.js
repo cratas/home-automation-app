@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useEffect } from "react";
 import Carousel from "react-grid-carousel";
 import ValueBubble from "../ui/ValueBubble";
 
@@ -11,7 +11,18 @@ import classes from "./Sections.module.css";
 import { FaTemperatureHigh } from "react-icons/fa";
 import { WiHumidity } from "react-icons/wi";
 
+
 const Room = (props) => {
+  const devicesList = props.data.devices?.map((device) => (
+    <Carousel.Item>
+      <DeviceBubble
+        deviceName={device.name}
+        isActive={device.is_active}
+        hasError={device.has_error}
+        lastTime={device.last_time}
+      />
+    </Carousel.Item>
+  ));
 
   return (
     <>
@@ -65,25 +76,11 @@ const Room = (props) => {
       </Row>
       <Row className="h-25" style={{ padding: "1rem 0.6rem" }}>
         <Carousel cols={4} rows={1} gap={17} loop={true}>
-          <Carousel.Item>
-            <DeviceBubble deviceName={"Senzor teplota"} isActive={true} hasError={false}/>
-          </Carousel.Item>
-          <Carousel.Item>
-          <DeviceBubble deviceName={"Senzor CO2"} isActive={false} hasError={false}/>
-          </Carousel.Item>
-          <Carousel.Item>
-          <DeviceBubble deviceName={"Svetlo 1"} isActive={true} hasError={false}/>
-          </Carousel.Item>
-          <Carousel.Item>
-          <DeviceBubble deviceName={"Svetlo 2"} isActive={false} hasError={false}/>
-          </Carousel.Item>
-          <Carousel.Item>
-          <DeviceBubble deviceName={"Svetlo 3"} isActive={true} hasError={false}/>
-          </Carousel.Item>
+            {devicesList}
         </Carousel>
       </Row>
       <Row className={`h-50`} style={{ padding: "0.3rem" }}>
-        <Col className={classes.bubbleWrapper} >
+        <Col className={classes.bubbleWrapper}>
           <StatisticBubble valueType="Spotřeba vody a elektřiny" />
         </Col>
       </Row>

@@ -6,7 +6,11 @@ import {
   MdReportGmailerrorred,
 } from "react-icons/md";
 
+
+
 const RoomBubble = (props) => {
+
+
 
   var bubbleStyle;
   if (props.errorCount > 0) {

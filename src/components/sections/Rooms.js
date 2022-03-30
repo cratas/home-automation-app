@@ -1,7 +1,7 @@
 import { React, useState, useRef, useEffect } from "react";
 
 import classes from "./Sections.module.css";
-import { Carousel } from "react-bootstrap";
+import { Carousel, Spinner } from "react-bootstrap";
 
 import Room from "./Room";
 
@@ -14,6 +14,8 @@ const Rooms = () => {
   const ref = useRef(null);
   const [loadedData, setLoadedData] = useState({ data: [] });
   const [currentRoom, setCurrentRoom] = useState("")
+  const [isLoaded, setIsLoaded] = useState(false);
+
 
   useEffect(() => {
     let incomingData;
@@ -24,6 +26,7 @@ const Rooms = () => {
         incomingData = res.data;
         setLoadedData({ data: incomingData });
         setCurrentRoom(incomingData[0].name)
+        setIsLoaded(true);
       })
       .catch((err) => {
         "error";
@@ -48,7 +51,11 @@ const Rooms = () => {
     </Carousel.Item>
   ));
 
-  return (
+  return !isLoaded ? (
+    <div className={`${classes.sectionWrapper} ${classes.spinnerWrapper}`}>
+      <Spinner animation="border" />
+    </div>
+  ) : (
     <div className={classes.sectionWrapper}>
       <div className={classes.header}>
         <h5>

@@ -3,8 +3,23 @@ import { Form } from "react-bootstrap";
 
 import { useState } from "react";
 
+var options = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
+
 const DeviceBubble = (props) => {
   const [isActive, setIsActive] = useState(props.isActive);
+
+  var date;
+  if(props.lastTime !== null) {
+    date = new Date(props.lastTime).toLocaleDateString("cs-CZ", options);
+  } else {
+    date = 'Není známo'
+  }
+
 
   const handeFormCheck = () => {
     setIsActive((oldState) => !oldState);
@@ -50,7 +65,7 @@ const DeviceBubble = (props) => {
         <div className={classes.statusWrapper}>
           {/* <MdOutlineMobileOff size={20} style={{ marginLeft: "1px" }} /> */}
           <h6>
-            <span style={{ fontWeight: "bold" }}>dnes 14:32</span>
+            <span style={{ fontWeight: "bold" }}>{date}</span>
           </h6>
         </div>
 
