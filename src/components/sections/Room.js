@@ -1,7 +1,8 @@
+import { React } from "react";
 import Carousel from "react-grid-carousel";
 import ValueBubble from "../ui/ValueBubble";
 
-import { Row, Button, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import StatisticBubble from "../ui/StatisticBubble";
 import DeviceBubble from "../ui/DeviceBubble";
 
@@ -11,6 +12,7 @@ import { FaTemperatureHigh } from "react-icons/fa";
 import { WiHumidity } from "react-icons/wi";
 
 const Room = (props) => {
+
   return (
     <>
       <Row className="h-25" style={{ padding: "0.3rem" }}>
@@ -19,7 +21,7 @@ const Room = (props) => {
             valueType="Teplota"
             icon={<FaTemperatureHigh size={30} />}
             unit={"°C"}
-            value={27}
+            value={props.data.temperature}
             plus={"+"}
             customStyle={{ borderColor: "var(--color-orange)" }}
           />
@@ -29,7 +31,7 @@ const Room = (props) => {
             valueType="Vlhkost"
             icon={<WiHumidity size={50} />}
             unit={"%"}
-            value={51}
+            value={props.data.humidity}
             customStyle={{ borderColor: "var(--color-blue)" }}
             darkTheme={true}
           />

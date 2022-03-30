@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import SideBar from "./nav/SideBar";
 import Home from "./sections/Home";
-import Devices from "./sections/Devices";
 
 import classes from "./Content.module.css";
 import Rooms from "./sections/Rooms";
@@ -15,7 +14,7 @@ const Content = () => {
   };
 
   return (
-    <div className={`${classes.contentWrapper}`}>
+    <div className={`${classes.appWrapper}`}>
       <SideBar changeSection={handleChangeSection} currentSection={section}/>
 
       {section === 1 && <Home /> }

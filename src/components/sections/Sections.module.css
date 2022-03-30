@@ -1,7 +1,4 @@
-.carousel-control-next-icon,
-.carousel-control-prev-icon {
-  filter: invert(1);
-}
+
 .sectionWrapper {
   border-radius: 28px;
   width: 90%;
@@ -55,6 +52,12 @@
   color: var(--color-orange);
 }
 
+.roomsScrollers {
+  width: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 @media only screen and (max-width: 482px) {
   .sectionWrapper {

@@ -8,10 +8,17 @@ import {
 
 const RoomBubble = (props) => {
 
+  var bubbleStyle;
+  if (props.errorCount > 0) {
+    bubbleStyle = `${classes.bubble} ${classes.errorRoom}`;
+  } else if (props.activeCount > 0 && props.errorCount === 0) {
+    bubbleStyle = `${classes.bubble} ${classes.activeRoom}`;
+  } else if (props.nonActiveCount > 0 && props.activeCount === 0 && props.errorCount === 0) {
+    bubbleStyle = `${classes.bubble} ${classes.notActiveRoom}`;
+  }
 
-  
   return (
-    <div className={classes.bubble}>
+    <div className={bubbleStyle}>
       <div className={classes.titleWrapper}>
         <h6>{props.valueType}</h6>
       </div>
@@ -27,19 +34,25 @@ const RoomBubble = (props) => {
         <div className={classes.statusWrapper}>
           <MdOutlineMobileFriendly size={20} style={{ color: "green" }} />
           <h6>
-            <span style={{ fontWeight: "bold" }}>1</span> aktivní
+            <span style={{ fontWeight: "bold" }}>{props.activeCount}</span>{" "}
+            aktivní
           </h6>
         </div>
         <div className={classes.statusWrapper}>
-          <MdOutlineMobileOff size={20} style={{marginLeft: '1px'}}/>
+          <MdOutlineMobileOff size={20} style={{ marginLeft: "1px" }} />
           <h6>
-            <span style={{ fontWeight: "bold"}}>2</span> neaktivní
+            <span style={{ fontWeight: "bold" }}>{props.nonActiveCount}</span>{" "}
+            neaktivní
           </h6>
         </div>
         <div className={classes.statusWrapper}>
-          <MdReportGmailerrorred size={24} style={{ color: "red", marginTop: '-3px'}} />
+          <MdReportGmailerrorred
+            size={24}
+            style={{ color: "red", marginTop: "-3px" }}
+          />
           <h6>
-            <span style={{ fontWeight: "bold" }}>0</span> neodpovídá
+            <span style={{ fontWeight: "bold" }}>{props.errorCount}</span>{" "}
+            neodpovídá
           </h6>
         </div>
       </div>

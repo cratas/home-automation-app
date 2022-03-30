@@ -1,19 +1,34 @@
-import { React, useState, useRef } from "react";
+import { React, useState, useRef, useEffect } from "react";
 
 import classes from "./Sections.module.css";
-import { Carousel, Row, Button } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 
 import Room from "./Room";
 
+import axios from "axios";
 
-import {
-  MdArrowBackIos,
-  MdArrowForwardIos,
-} from "react-icons/md";
+import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
 const Rooms = () => {
   const [index, setIndex] = useState(0);
   const ref = useRef(null);
+  const [loadedData, setLoadedData] = useState({ data: [] });
+  const [currentRoom, setCurrentRoom] = useState("")
+
+  useEffect(() => {
+    let incomingData;
+
+    axios
+      .get("http://localhost:8000/api/rooms/")
+      .then((res) => {
+        incomingData = res.data;
+        setLoadedData({ data: incomingData });
+        setCurrentRoom(incomingData[0].name)
+      })
+      .catch((err) => {
+        "error";
+      });
+  }, []);
 
   const onPrevClick = () => {
     ref.current.prev();
@@ -24,7 +39,14 @@ const Rooms = () => {
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
+    setCurrentRoom(loadedData.data[selectedIndex].name)
   };
+
+  const roomsList = loadedData.data.map((room) => (
+    <Carousel.Item style={{ height: "100%" }}>
+      <Room data={room} />
+    </Carousel.Item>
+  ));
 
   return (
     <div className={classes.sectionWrapper}>
@@ -33,13 +55,13 @@ const Rooms = () => {
           <strong>Přehled místností v domě</strong>
         </h5>
 
-        <div>
+        <div className={classes.roomsScrollers}>
           <MdArrowBackIos
             onClick={onPrevClick}
             size={30}
             className={classes.roomIcon}
           />
-          <strong>Kuchyně</strong>
+          <strong>{currentRoom}</strong>
           <MdArrowForwardIos
             onClick={onNextClick}
             size={30}
@@ -62,14 +84,8 @@ const Rooms = () => {
             alignItems: "space-around",
             height: "100%",
           }}
-          
         >
-          <Carousel.Item style={{ height: "100%" }}> 
-            <Room />
-          </Carousel.Item>
-          <Carousel.Item style={{ height: "100%" }}>
-            <Room />
-          </Carousel.Item>
+          {roomsList}
         </Carousel>
       </div>
     </div>

@@ -105,6 +105,22 @@
   background-color: rgba(133, 41, 41, 0.445);
 }
 
+.activeRoom {
+  outline: 4px solid rgba(102, 184, 136, 0.753);
+  outline-offset: -4px;
+}
+
+.notActiveRoom {
+  outline: 4px solid rgb(177, 177, 177);
+  outline-offset: -4px;
+}
+
+.errorRoom {
+  background-color: rgba(167, 70, 70, 0.24);
+  outline: 4px solid rgba(199, 36, 36, 0.842);
+  outline-offset: -4px;
+}
+
 
 @media only screen and (max-width: 482px) {
   .contentWrapper {
