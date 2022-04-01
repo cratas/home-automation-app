@@ -1,15 +1,20 @@
 import { Form, Row, Button } from "react-bootstrap";
-import { useState, React } from "react";
+import { useState, React, useRef } from "react";
 import { MySelect, MultiValue, Option } from "./Option";
 import buttonStyle from "../nav/SideBar.module.css";
 import { useEffect } from "react";
+import axios from "axios";
+
+import { CSVLink } from "react-csv";
 
 const ExportForm = (props) => {
   const [fromDate, setFromDate] = useState(new Date());
   const [untilDate, setUntilDate] = useState(new Date());
-  const [selectedDevice, setSelectedDevice] = useState(null);
-  const [validated, setValidated] = useState(false);
+  const [selectedDevice, setSelectedDevice] = useState([]);
   const [deviceOptions, setDeviceOptions] = useState([]);
+  const [isShownWarning, setIsShownWarning] = useState(false);
+  const [csvData, setCsvData] = useState();
+  const csvLink = useRef();
 
   useEffect(() => {
     let loadedOptions = [];
@@ -19,7 +24,6 @@ const ExportForm = (props) => {
     );
 
     setDeviceOptions(loadedOptions);
-
   }, []);
 
   const handleSelectedDevice = (selected) => {
@@ -36,21 +40,33 @@ const ExportForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
 
-    setValidated(true);
+    const form = event.currentTarget;
+
+    if (form.checkValidity() === false || selectedDevice.length < 1) {
+      setIsShownWarning(true);
+    } else {
+      setIsShownWarning(false);
+
+      axios
+        .post("http://localhost:8000/api/export/", {
+          devices: selectedDevice,
+          from: fromDate,
+          until: untilDate,
+        })
+        .then((res) => {
+          let incomingData = res.data;
+          setCsvData(incomingData);
+        })
+        .catch((e) => console.log(e))
+        .then(() => {
+          if (csvData.length > 0) csvLink.current.link.click();
+        });
+    }
   };
+
   return (
-    <Form
-      className="p-5"
-      noValidate
-      validated={validated}
-      onSubmit={handleSubmit}
-    >
+    <Form className="p-5 pt-4" onSubmit={handleSubmit}>
       <Form.Group as={Row} className="p-2">
         <Form.Label>
           <strong>Od</strong>
@@ -63,7 +79,6 @@ const ExportForm = (props) => {
           value={fromDate}
         />
       </Form.Group>
-
       <Form.Group as={Row} className="mt-3 p-2">
         <Form.Label>
           <strong>Do</strong>
@@ -76,7 +91,6 @@ const ExportForm = (props) => {
           value={untilDate}
         />
       </Form.Group>
-
       <Form.Group as={Row} className="mt-3">
         <Form.Label style={{ marginLeft: "0.5rem" }}>
           <strong>Vybrané senzory</strong>
@@ -94,6 +108,17 @@ const ExportForm = (props) => {
           allowSelectAll={true}
           value={selectedDevice}
         />
+        {isShownWarning && (
+          <p style={{ marginLeft: "0.5rem", color: "red" }}>
+            Vyberte prosím alespoň jeden senzor.
+          </p>
+        )}
+        {csvData?.length < 1 && (
+          <p style={{ marginLeft: "0.5rem", color: "red" }}>
+            Ve vybraném časovém intervalu nebyly pro vybrané senzory naměřeny
+            žádné hodnoty.
+          </p>
+        )}
       </Form.Group>
       <Form.Group
         as={Row}
@@ -108,6 +133,18 @@ const ExportForm = (props) => {
         >
           Exportovat
         </Button>
+        {csvData && (
+          <CSVLink
+            data={csvData}
+            filename="sensors_data.csv"
+            separator={","}
+            style={{ visibility: "hidden" }}
+            ref={csvLink}
+            target="_blank"
+          >
+            Download me
+          </CSVLink>
+        )}
       </Form.Group>
     </Form>
   );
