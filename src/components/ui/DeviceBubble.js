@@ -4,9 +4,8 @@ import { Form } from "react-bootstrap";
 import { useState } from "react";
 
 var options = {
-  weekday: "long",
   year: "numeric",
-  month: "long",
+  month: "numeric",
   day: "numeric",
 };
 
@@ -15,7 +14,7 @@ const DeviceBubble = (props) => {
 
   var date;
   if(props.lastTime !== null) {
-    date = new Date(props.lastTime).toLocaleDateString("cs-CZ", options);
+    date = new Date(props.lastTime).toLocaleTimeString("cs-CZ", options);
   } else {
     date = 'Není známo'
   }
@@ -40,6 +39,7 @@ const DeviceBubble = (props) => {
         <h6>{props.deviceName}</h6>
         <Form>
           <Form.Check
+            disabled={props.hasError}
             type="switch"
             id="custom-switch"
             checked={isActive}
