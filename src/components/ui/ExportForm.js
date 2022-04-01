@@ -14,6 +14,7 @@ const ExportForm = (props) => {
   const [deviceOptions, setDeviceOptions] = useState([]);
   const [isShownWarning, setIsShownWarning] = useState(false);
   const [csvData, setCsvData] = useState();
+  const fileNameRef = useRef();
   const csvLink = useRef();
 
   useEffect(() => {
@@ -56,6 +57,7 @@ const ExportForm = (props) => {
         .then((res) => {
           let incomingData = res.data;
           setCsvData(incomingData);
+          console.log(fileNameRef.current)
         })
         .catch((e) => console.log(e));
     }
@@ -69,32 +71,30 @@ const ExportForm = (props) => {
 
   return (
     <Form className="p-5 pt-4" onSubmit={handleSubmit}>
-      <Form.Group as={Row} className="p-2">
+      <Form.Group as={Row} style={{padding: '0.5rem 0.9rem'}}>
         <Form.Label>
           <strong>Od</strong>
         </Form.Label>
         <Form.Control
           required
           type="date"
-          name="date_of_birth"
           onChange={handleFromDate}
           value={fromDate}
         />
       </Form.Group>
-      <Form.Group as={Row} className="mt-3 p-2">
+      <Form.Group as={Row} className="mt-2" style={{padding: '0.5rem 0.9rem'}}>
         <Form.Label>
           <strong>Do</strong>
         </Form.Label>
         <Form.Control
           required
           type="date"
-          name="date_of_birth"
           onChange={handleUntilDate}
           value={untilDate}
         />
       </Form.Group>
       <Form.Group as={Row} className="mt-3">
-        <Form.Label style={{ marginLeft: "0.5rem" }}>
+        <Form.Label style={{ marginLeft: "0.8rem" }}>
           <strong>Vybrané senzory</strong>
         </Form.Label>
         <MySelect
@@ -110,7 +110,17 @@ const ExportForm = (props) => {
           allowSelectAll={true}
           value={selectedDevice}
         />
-        {isShownWarning && (
+      </Form.Group>
+      <Form.Group as={Row} className="mt-3" style={{padding: '0.5rem 0.9rem'}}>
+        <Form.Label>
+          <strong>Název souboru exportu</strong>
+        </Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Zadejte název" 
+          ref={fileNameRef}
+        />
+         {isShownWarning && (
           <p style={{ marginLeft: "0.5rem", color: "red" }}>
             Vyberte prosím alespoň jeden senzor.
           </p>
@@ -138,7 +148,7 @@ const ExportForm = (props) => {
         {csvData && (
           <CSVLink
             data={csvData}
-            filename="sensors_data.csv"
+            filename={fileNameRef.current.value ? fileNameRef.current.value : "data"}
             separator={","}
             style={{ visibility: "hidden" }}
             ref={csvLink}
