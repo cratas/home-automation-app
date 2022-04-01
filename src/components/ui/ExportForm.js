@@ -40,7 +40,6 @@ const ExportForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const form = event.currentTarget;
 
     if (form.checkValidity() === false || selectedDevice.length < 1) {
@@ -58,12 +57,15 @@ const ExportForm = (props) => {
           let incomingData = res.data;
           setCsvData(incomingData);
         })
-        .catch((e) => console.log(e))
-        .then(() => {
-          if (csvData.length > 0) csvLink.current.link.click();
-        });
+        .catch((e) => console.log(e));
     }
   };
+
+  useEffect(() => {
+    if (csvData?.length > 0) {
+      csvLink.current.link.click();
+    }
+  }, [csvData]);
 
   return (
     <Form className="p-5 pt-4" onSubmit={handleSubmit}>
@@ -113,7 +115,7 @@ const ExportForm = (props) => {
             Vyberte prosím alespoň jeden senzor.
           </p>
         )}
-        {csvData?.length < 1 && (
+        {csvData?.length < 1 && !isShownWarning && (
           <p style={{ marginLeft: "0.5rem", color: "red" }}>
             Ve vybraném časovém intervalu nebyly pro vybrané senzory naměřeny
             žádné hodnoty.
