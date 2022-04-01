@@ -12,8 +12,7 @@ import RoomBubble from "../ui/RoomBubble";
 
 import axios from "axios";
 
-const Home = () => {
-  const date = new Date().toLocaleDateString("cs-CZ", options);
+const Home = (props) => {
   const [loadedData, setLoadedData] = useState({ data: [] });
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -58,7 +57,7 @@ const Home = () => {
           </span>
         </div>
         <div className={classes.date}>
-          <span style={{ fontWeight: "bold" }}>{date}</span>
+          <span style={{ fontWeight: "bold" }}>{props.date}</span>
         </div>
       </div>
 
@@ -180,9 +179,3 @@ const data = [
   },
 ];
 
-var options = {
-  weekday: "long",
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-};

@@ -1,43 +1,37 @@
-import { useState, React } from "react";
-import { Form, Col, Row, Button } from "react-bootstrap";
+import { useState, React, useEffect } from "react";
+
 import classes from "./Sections.module.css";
-import buttonStyle from "../nav/SideBar.module.css";
+import ExportForm from "../ui/ExportForm";
 
-import { MySelect, MultiValue, Option } from "../ui/Option";
+import { Spinner } from "react-bootstrap";
 
-const colourOptions = [
-  { value: "ocean1", label: "Ocean" },
-  { value: "blue", label: "Blue" },
-  { value: "purple", label: "Purple" },
-  { value: "red", label: "Red" },
-  { value: "orange", label: "Orange" },
-  { value: "yellow", label: "Yellow" },
-  { value: "green", label: "Green" },
-  { value: "forest", label: "Forest" },
-  { value: "slate", label: "Slate" },
-  { value: "silver", label: "Silver" },
-];
 
-const Export = () => {
-  const [fromDate, setFromDate] = useState(new Date());
-  const [untilDate, setUntilDate] = useState(new Date());
-  const [selectedDevice, setSelectedDevice] = useState(null);
+import axios from "axios";
 
-  const handleSelectedDevice = (selected) => {
-    setSelectedDevice(selected);
+const Export = (props) => {
+  const [loadedData, setLoadedData] = useState({ data: [] });
+  const [isLoaded, setIsLoaded] = useState(false);
 
-    console.log(selected);
-  };
+  useEffect(() => {
+    let incomingData;
 
-  const handleFromDate = (event) => {
-    setFromDate(event.target.value);
-  };
+    axios
+      .get("http://localhost:8000/api/export/")
+      .then((res) => {
+        incomingData = res.data;
+        setLoadedData({ data: incomingData });
+        setIsLoaded(true);
+      })
+      .catch((err) => {
+        "error";
+      });
+  }, []);
 
-  const handleUntilDate = (event) => {
-    setUntilDate(event.target.value);
-  };
-
-  return (
+  return !isLoaded ? (
+    <div className={`${classes.sectionWrapper} ${classes.spinnerWrapper}`}>
+      <Spinner animation="border" />
+    </div>
+  ) : (
     <div className={classes.sectionWrapper}>
       <div className={classes.header}>
         <div className={classes.profile}>
@@ -45,67 +39,13 @@ const Export = () => {
             <strong>Export naměřených hodnot</strong>
           </h5>
         </div>
+        <div className={classes.date}>
+          <span style={{ fontWeight: "bold" }}>{props.date}</span>
+        </div>
       </div>
 
       <div className={`p-2 ${classes.contentWrapper} ${classes.exportWrapper}`}>
-        <Form className="p-5">
-          <Form.Group as={Row} className="p-2">
-            <Form.Label>
-              <strong>Od</strong>
-            </Form.Label>
-            <Form.Control
-              type="date"
-              name="date_of_birth"
-              onChange={handleFromDate}
-              value={fromDate}
-            />
-          </Form.Group>
-
-          <Form.Group as={Row} className="mt-3 p-2">
-            <Form.Label>
-              <strong>Do</strong>
-            </Form.Label>
-            <Form.Control
-              type="date"
-              name="date_of_birth"
-              onChange={handleUntilDate}
-              value={untilDate}
-            />
-          </Form.Group>
-
-          <Form.Group as={Row} className="mt-3">
-            <Form.Label style={{marginLeft: '0.5rem'}}>
-              <strong>Vybrané senzory</strong>
-            </Form.Label>
-            <MySelect
-              options={colourOptions}
-              isMulti
-              closeMenuOnSelect={false}
-              hideSelectedOptions={false}
-              components={{
-                Option,
-                MultiValue,
-              }}
-              onChange={handleSelectedDevice}
-              allowSelectAll={true}
-              value={selectedDevice}
-            />
-          </Form.Group>
-          <Form.Group
-            as={Row}
-            className="mt-5"
-            style={{ display: "flex", justifyContent: "center" }}
-          >
-            <Button
-              variant="primary"
-              type="submit"
-              className={buttonStyle.button}
-              style={{ maxWidth: "12rem" }}
-            >
-              Exportovat
-            </Button>
-          </Form.Group>
-        </Form>
+        <ExportForm options={loadedData.data}/>
       </div>
     </div>
   );

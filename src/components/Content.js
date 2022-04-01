@@ -7,7 +7,16 @@ import Rooms from "./sections/Rooms";
 import Statistics from "./sections/Statistics";
 import Export from "./sections/Export";
 
+var options = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
+
+
 const Content = () => {
+  const date = new Date().toLocaleDateString("cs-CZ", options);
   const [section, setSection] = useState(1);
 
   const handleChangeSection = (section_id) => {
@@ -18,10 +27,10 @@ const Content = () => {
     <div className={`${classes.appWrapper}`}>
       <SideBar changeSection={handleChangeSection} currentSection={section}/>
 
-      {section === 1 && <Home /> }
+      {section === 1 && <Home date={date}/> }
       {section === 2 && <Rooms /> }
       {section === 3 && <Statistics /> }
-      {section === 4 && <Export /> }
+      {section === 4 && <Export date={date}/> }
 
     </div>
   );
