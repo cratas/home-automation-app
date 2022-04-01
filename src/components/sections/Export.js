@@ -1,12 +1,9 @@
 import { useState, React } from "react";
-import { Form, Col, Row } from "react-bootstrap";
+import { Form, Col, Row, Button } from "react-bootstrap";
 import classes from "./Sections.module.css";
-// import DatePicker from 'react-date-picker';
+import buttonStyle from "../nav/SideBar.module.css";
 
-import MySelect from "../ui/Option";
-import { default as ReactSelect } from "react-select";
-
-import { components } from "react-select";
+import { MySelect, MultiValue, Option } from "../ui/Option";
 
 const colourOptions = [
   { value: "ocean1", label: "Ocean" },
@@ -21,37 +18,15 @@ const colourOptions = [
   { value: "silver", label: "Silver" },
 ];
 
-const Option = (props) => {
-  return (
-    <div>
-      <components.Option {...props}>
-        <input
-          type="checkbox"
-          checked={props.isSelected}
-          onChange={() => null}
-        />{" "}
-        <label>{props.label}</label>
-      </components.Option>
-    </div>
-  );
-};
-
-const MultiValue = (props) => (
-  <components.MultiValue {...props}>
-    <span>{props.data.label}</span>
-  </components.MultiValue>
-);
-
-
 const Export = () => {
   const [fromDate, setFromDate] = useState(new Date());
   const [untilDate, setUntilDate] = useState(new Date());
   const [selectedDevice, setSelectedDevice] = useState(null);
 
   const handleSelectedDevice = (selected) => {
-    setSelectedDevice(selected)
+    setSelectedDevice(selected);
 
-    console.log(selected)
+    console.log(selected);
   };
 
   const handleFromDate = (event) => {
@@ -74,52 +49,61 @@ const Export = () => {
 
       <div className={`p-2 ${classes.contentWrapper} ${classes.exportWrapper}`}>
         <Form className="p-5">
-          <Form.Group as={Row}>
-            <Col>
-              <Form.Label className={{}}>
-                <strong>Od</strong>
-              </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control
-                type="date"
-                name="date_of_birth"
-                onChange={handleFromDate}
-                value={fromDate}
-                style={{ maxWidth: "13rem" }}
-              />
-            </Col>
+          <Form.Group as={Row} className="p-2">
+            <Form.Label>
+              <strong>Od</strong>
+            </Form.Label>
+            <Form.Control
+              type="date"
+              name="date_of_birth"
+              onChange={handleFromDate}
+              value={fromDate}
+            />
           </Form.Group>
-          <hr />
-          <Form.Group as={Row}>
-            <Col>
-              <Form.Label>
-                <strong>Do</strong>
-              </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control
-                type="date"
-                name="date_of_birth"
-                onChange={handleUntilDate}
-                value={untilDate}
-                style={{ maxWidth: "13rem" }}
-              />
-            </Col>
-          </Form.Group>
-          <hr />
 
-          <Form.Group>
+          <Form.Group as={Row} className="mt-3 p-2">
+            <Form.Label>
+              <strong>Do</strong>
+            </Form.Label>
+            <Form.Control
+              type="date"
+              name="date_of_birth"
+              onChange={handleUntilDate}
+              value={untilDate}
+            />
+          </Form.Group>
+
+          <Form.Group as={Row} className="mt-3">
+            <Form.Label style={{marginLeft: '0.5rem'}}>
+              <strong>Vybrané senzory</strong>
+            </Form.Label>
             <MySelect
               options={colourOptions}
               isMulti
               closeMenuOnSelect={false}
               hideSelectedOptions={false}
-              components={{ Option, MultiValue }}
+              components={{
+                Option,
+                MultiValue,
+              }}
               onChange={handleSelectedDevice}
               allowSelectAll={true}
               value={selectedDevice}
             />
+          </Form.Group>
+          <Form.Group
+            as={Row}
+            className="mt-5"
+            style={{ display: "flex", justifyContent: "center" }}
+          >
+            <Button
+              variant="primary"
+              type="submit"
+              className={buttonStyle.button}
+              style={{ maxWidth: "12rem" }}
+            >
+              Exportovat
+            </Button>
           </Form.Group>
         </Form>
       </div>
