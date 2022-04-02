@@ -83,7 +83,7 @@ const Room = (props) => {
       </Row>
       <Row className={`h-50`} style={{ padding: "0.3rem" }}>
         <Col className={classes.bubbleWrapper}>
-          <StatisticBubble valueType="Spotřeba vody a elektřiny" />
+          {/* <StatisticBubble valueType="Spotřeba vody a elektřiny" /> */}
         </Col>
       </Row>
     </>

@@ -10,10 +10,10 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  Area,
+  AreaChart,
   ResponsiveContainer,
 } from "recharts";
-
-
 
 const StatisticBubble = (props) => {
   return (
@@ -24,10 +24,10 @@ const StatisticBubble = (props) => {
 
       <div className={classes.bubbleContent}>
         <ResponsiveContainer width="95%" height="80%">
-          <BarChart
+          {/* <BarChart
             width={500}
             height={300}
-            data={props.data}
+            data={props.data.data}
             margin={{
               top: 5,
               right: 30,
@@ -36,15 +36,32 @@ const StatisticBubble = (props) => {
             }}
           >
             <CartesianGrid vertical={false} stroke="#ebebeb"/>
-            <XAxis dataKey="name" />
+            <XAxis interval={7} dataKey="day"/>
             <YAxis />
             <Tooltip />
             <Legend  />
             <Bar dataKey="voda" fill="var(--color-blue)"/>
-            <Bar dataKey="elektrina" fill="var(--color-orange)" />
-            <Bar dataKey="plyn" fill="var(--color-graph-grey)" barSize={5}/>
+            <Bar dataKey="elektřina" fill="var(--color-orange)" />
 
-          </BarChart>
+          </BarChart> */}
+          <AreaChart
+            width={500}
+            height={400}
+            data={props.data.data}
+            margin={{
+              top: 10,
+              right: 30,
+              left: 0,
+              bottom: 0,
+            }}
+          >
+            <CartesianGrid vertical={false} stroke="#ebebeb" />
+            <XAxis interval={7} dataKey="day" />
+            <YAxis />
+            <Tooltip />
+            <Area type="monotone" dataKey="voda" stackId="1" stroke="#8884d8" fill="#8884d8" />
+            <Area type="monotone" dataKey="elektřina" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+          </AreaChart>
         </ResponsiveContainer>
       </div>
     </div>

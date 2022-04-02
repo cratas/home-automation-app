@@ -13,7 +13,9 @@ import RoomBubble from "../ui/RoomBubble";
 import axios from "axios";
 
 const Home = (props) => {
-  const [loadedData, setLoadedData] = useState({ data: [] });
+  const [loadedData, setLoadedData] = useState({ data: []});
+  const [loadedStatistics, setLoadedStatistics] = useState({ data: []});
+
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -29,6 +31,20 @@ const Home = (props) => {
       .catch((err) => {
         "error";
       });
+
+      axios
+      .get("http://localhost:8000/api/statistics/")
+      .then((res) => {
+        incomingData = res.data;
+        setLoadedStatistics({ data: incomingData });
+        setIsLoaded(true);
+      })
+      .catch((err) => {
+        "error";
+      });
+
+
+      
   }, []);
 
   const roomsList = loadedData.data.rooms
@@ -123,7 +139,7 @@ const Home = (props) => {
         <Row className={`h-50 ${classes.rowStyle} pt-2`}>
           <Col className={classes.bubbleWrapper}>
             <StatisticBubble
-              data={data}
+              data={loadedStatistics}
               valueType="Celková týdenní spotřeba"
             />
           </Col>
@@ -135,48 +151,48 @@ const Home = (props) => {
 
 export default Home;
 
-const data = [
-  {
-    name: "Po",
-    voda: 4000,
-    elektrina: 2400,
-    plyn: 2400,
-  },
-  {
-    name: "Út",
-    voda: 3000,
-    elektrina: 1398,
-    plyn: 2210,
-  },
-  {
-    name: "St",
-    voda: 2000,
-    elektrina: 9800,
-    plyn: 2290,
-  },
-  {
-    name: "Čt",
-    voda: 2780,
-    elektrina: 3908,
-    plyn: 2000,
-  },
-  {
-    name: "Pá",
-    voda: 1890,
-    elektrina: 4800,
-    plyn: 2181,
-  },
-  {
-    name: "So",
-    voda: 2390,
-    elektrina: 3800,
-    plyn: 2500,
-  },
-  {
-    name: "Ne",
-    voda: 3490,
-    elektrina: 4300,
-    plyn: 2100,
-  },
-];
+// const loadedStatistics = [
+//   {
+//     name: "Po",
+//     voda: 4000,
+//     elektrina: 2400,
+//     plyn: 2400,
+//   },
+//   {
+//     name: "Út",
+//     voda: 3000,
+//     elektrina: 1398,
+//     plyn: 2210,
+//   },
+//   {
+//     name: "St",
+//     voda: 2000,
+//     elektrina: 9800,
+//     plyn: 2290,
+//   },
+//   {
+//     name: "Čt",
+//     voda: 2780,
+//     elektrina: 3908,
+//     plyn: 2000,
+//   },
+//   {
+//     name: "Pá",
+//     voda: 1890,
+//     elektrina: 4800,
+//     plyn: 2181,
+//   },
+//   {
+//     name: "So",
+//     voda: 2390,
+//     elektrina: 3800,
+//     plyn: 2500,
+//   },
+//   {
+//     name: "Ne",
+//     voda: 3490,
+//     elektrina: 4300,
+//     plyn: 2100,
+//   },
+// ];
 
