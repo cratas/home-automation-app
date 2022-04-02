@@ -32,8 +32,9 @@ const Home = (props) => {
   }, []);
 
   const roomsList = loadedData.data.rooms
+    ?.sort((a, b) => b.active_count - a.active_count)
     ?.sort((a, b) => b.error_count - a.error_count)
-    .map((room) => (
+    ?.map((room) => (
       <Carousel.Item>
         <RoomBubble
           valueType={room.name}
@@ -91,7 +92,7 @@ const Home = (props) => {
                 </span>
               }
               unit={"ppm"}
-              value={1283}
+              value={loadedData.data.house_co2}
               customStyle={{ borderColor: "var(--color-light-text)" }}
             />
           </Col>
@@ -123,7 +124,7 @@ const Home = (props) => {
           <Col className={classes.bubbleWrapper}>
             <StatisticBubble
               data={data}
-              valueType="Spotřeba vody a elektřiny"
+              valueType="Celková týdenní spotřeba"
             />
           </Col>
         </Row>
@@ -139,43 +140,43 @@ const data = [
     name: "Po",
     voda: 4000,
     elektrina: 2400,
-    amt: 2400,
+    plyn: 2400,
   },
   {
     name: "Út",
     voda: 3000,
     elektrina: 1398,
-    amt: 2210,
+    plyn: 2210,
   },
   {
     name: "St",
     voda: 2000,
     elektrina: 9800,
-    amt: 2290,
+    plyn: 2290,
   },
   {
     name: "Čt",
     voda: 2780,
     elektrina: 3908,
-    amt: 2000,
+    plyn: 2000,
   },
   {
     name: "Pá",
     voda: 1890,
     elektrina: 4800,
-    amt: 2181,
+    plyn: 2181,
   },
   {
     name: "So",
     voda: 2390,
     elektrina: 3800,
-    amt: 2500,
+    plyn: 2500,
   },
   {
     name: "Ne",
     voda: 3490,
     elektrina: 4300,
-    amt: 2100,
+    plyn: 2100,
   },
 ];
 

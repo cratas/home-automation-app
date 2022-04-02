@@ -35,13 +35,15 @@ const StatisticBubble = (props) => {
               bottom: 5,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid vertical={false} stroke="#ebebeb"/>
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="voda" fill="#3E92CC" />
-            <Legend />
-            <Bar dataKey="elektrina" fill="#FF595E" />
+            <Legend  />
+            <Bar dataKey="voda" fill="var(--color-blue)"/>
+            <Bar dataKey="elektrina" fill="var(--color-orange)" />
+            <Bar dataKey="plyn" fill="var(--color-graph-grey)" barSize={5}/>
+
           </BarChart>
         </ResponsiveContainer>
       </div>

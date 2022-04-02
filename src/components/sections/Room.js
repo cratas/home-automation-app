@@ -11,18 +11,20 @@ import classes from "./Sections.module.css";
 import { FaTemperatureHigh } from "react-icons/fa";
 import { WiHumidity } from "react-icons/wi";
 
-
 const Room = (props) => {
-  const devicesList = props.data.devices?.map((device) => (
-    <Carousel.Item>
-      <DeviceBubble
-        deviceName={device.name}
-        isActive={device.is_active}
-        hasError={device.has_error}
-        lastTime={device.last_time}
-      />
-    </Carousel.Item>
-  ));
+  const devicesList = props.data.devices
+    ?.sort((a, b) => Number(b.has_error) - Number(a.has_error))
+    ?.sort((a, b) => Number(b.is_active) - Number(a.is_active))
+    .map((device) => (
+      <Carousel.Item>
+        <DeviceBubble
+          deviceName={device.name}
+          isActive={device.is_active}
+          hasError={device.has_error}
+          lastTime={device.last_time}
+        />
+      </Carousel.Item>
+    ));
 
   return (
     <>
@@ -56,7 +58,7 @@ const Room = (props) => {
               </span>
             }
             unit={"ppm"}
-            value={1283}
+            value={props.data.co2}
             customStyle={{ borderColor: "var(--color-light-text)" }}
           />
         </Col>
@@ -69,14 +71,14 @@ const Room = (props) => {
               </span>
             }
             unit={"ppm"}
-            value={1283}
+            value={""}
             customStyle={{ borderColor: "var(--color-light-text)" }}
           />
         </Col>
       </Row>
       <Row className="h-25" style={{ padding: "1rem 0.6rem" }}>
         <Carousel cols={4} rows={1} gap={17} loop={true}>
-            {devicesList}
+          {devicesList}
         </Carousel>
       </Row>
       <Row className={`h-50`} style={{ padding: "0.3rem" }}>

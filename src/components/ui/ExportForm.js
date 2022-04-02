@@ -57,7 +57,6 @@ const ExportForm = (props) => {
         .then((res) => {
           let incomingData = res.data;
           setCsvData(incomingData);
-          console.log(fileNameRef.current)
         })
         .catch((e) => console.log(e));
     }

@@ -4,9 +4,12 @@
 
     background-color: #dfdfdf;
     --color-blue: #3B0AAE;
+    --color-gas: #919191;
     --color-orange: #FF6700;
     --color-platinum: #f3f3f3;
     --font-family:  'Montserrat', sans-serif;
     --color-orange-hover: #ff6600b9;
+    --color-graph-grey: rgb(192, 192, 192);
+    --color-graph-blue: #0942ff;
     --color-light-text: rgba(24, 24, 24, 0.849);
 }

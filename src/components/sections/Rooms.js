@@ -13,9 +13,8 @@ const Rooms = () => {
   const [index, setIndex] = useState(0);
   const ref = useRef(null);
   const [loadedData, setLoadedData] = useState({ data: [] });
-  const [currentRoom, setCurrentRoom] = useState("")
+  const [currentRoom, setCurrentRoom] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
-
 
   useEffect(() => {
     let incomingData;
@@ -25,8 +24,9 @@ const Rooms = () => {
       .then((res) => {
         incomingData = res.data;
         setLoadedData({ data: incomingData });
-        setCurrentRoom(incomingData[0].name)
+        setCurrentRoom(incomingData[0].name);
         setIsLoaded(true);
+        console.log(incomingData);
       })
       .catch((err) => {
         "error";
@@ -42,14 +42,15 @@ const Rooms = () => {
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
-    setCurrentRoom(loadedData.data[selectedIndex].name)
+    setCurrentRoom(loadedData.data[selectedIndex].name);
   };
 
-  const roomsList = loadedData.data.map((room) => (
-    <Carousel.Item style={{ height: "100%" }}>
-      <Room data={room} />
-    </Carousel.Item>
-  ));
+  const roomsList = loadedData.data
+    .map((room) => (
+      <Carousel.Item style={{ height: "100%" }}>
+        <Room data={room} />
+      </Carousel.Item>
+    ));
 
   return !isLoaded ? (
     <div className={`${classes.sectionWrapper} ${classes.spinnerWrapper}`}>
