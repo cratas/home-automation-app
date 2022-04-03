@@ -5,6 +5,8 @@ import buttonStyle from "../nav/SideBar.module.css";
 import { useEffect } from "react";
 import axios from "axios";
 
+import {BiExport} from 'react-icons/bi';
+
 import { CSVLink } from "react-csv";
 
 const ExportForm = (props) => {
@@ -70,37 +72,74 @@ const ExportForm = (props) => {
 
   return (
     <Form className="p-5 pt-4" onSubmit={handleSubmit}>
-      <Form.Group as={Row} style={{padding: '0.5rem 0.9rem'}}>
+      <Form.Group as={Row} style={{ padding: "0.5rem 0.9rem" }}>
         <Form.Label>
-          <strong>Od</strong>
+          <strong
+            style={{
+              backgroundColor: "var(--color-blue)",
+              color: "#fff",
+              padding: "0.5rem 1rem",
+              borderRadius: "10px",
+              margin: "-0.6rem",
+            }}
+          >
+            Od
+          </strong>
         </Form.Label>
         <Form.Control
           required
           type="date"
           onChange={handleFromDate}
           value={fromDate}
+          style={{ marginTop: "0.5rem" }}
         />
       </Form.Group>
-      <Form.Group as={Row} className="mt-2" style={{padding: '0.5rem 0.9rem'}}>
+      <Form.Group
+        as={Row}
+        className="mt-2"
+        style={{ padding: "0.5rem 0.9rem" }}
+      >
         <Form.Label>
-          <strong>Do</strong>
+          <strong
+            style={{
+              backgroundColor: "var(--color-blue)",
+              color: "#fff",
+              padding: "0.5rem 1rem",
+              borderRadius: "10px",
+              margin: "-0.6rem",
+            }}
+          >
+            Do
+          </strong>
         </Form.Label>
         <Form.Control
           required
           type="date"
           onChange={handleUntilDate}
           value={untilDate}
+          style={{ marginTop: "0.5rem" }}
         />
       </Form.Group>
       <Form.Group as={Row} className="mt-3">
-        <Form.Label style={{ marginLeft: "0.8rem" }}>
-          <strong>Vybrané senzory</strong>
+        <Form.Label style={{ marginLeft: "0.8rem", marginBottom: "1rem" }}>
+          <strong
+            style={{
+              backgroundColor: "var(--color-blue)",
+              color: "#fff",
+              padding: "0.5rem 1rem",
+              borderRadius: "10px",
+              margin: "-0.6rem",
+            }}
+          >
+            Vybrané senzory
+          </strong>
         </Form.Label>
         <MySelect
           options={deviceOptions}
           isMulti
           closeMenuOnSelect={false}
           hideSelectedOptions={false}
+          placeholder="Vyberte senzory"
           components={{
             Option,
             MultiValue,
@@ -110,16 +149,31 @@ const ExportForm = (props) => {
           value={selectedDevice}
         />
       </Form.Group>
-      <Form.Group as={Row} className="mt-3" style={{padding: '0.5rem 0.9rem'}}>
+      <Form.Group
+        as={Row}
+        className="mt-3"
+        style={{ padding: "0.5rem 0.9rem" }}
+      >
         <Form.Label>
-          <strong>Název souboru exportu</strong>
+          <strong
+            style={{
+              backgroundColor: "var(--color-blue)",
+              color: "#fff",
+              padding: "0.5rem 1rem",
+              borderRadius: "10px",
+              margin: "-0.6rem",
+            }}
+          >
+            Název souboru exportu
+          </strong>
         </Form.Label>
         <Form.Control
           type="text"
-          placeholder="Zadejte název" 
+          placeholder="Zadejte název"
           ref={fileNameRef}
+          style={{ marginTop: "0.5rem" }}
         />
-         {isShownWarning && (
+        {isShownWarning && (
           <p style={{ marginLeft: "0.5rem", color: "red" }}>
             Vyberte prosím alespoň jeden senzor.
           </p>
@@ -142,12 +196,15 @@ const ExportForm = (props) => {
           className={buttonStyle.button}
           style={{ maxWidth: "12rem" }}
         >
-          Exportovat
+          <BiExport size={20} style={{marginTop: '-0.3rem', marginRight: '0.5rem'}}/>
+          <span>Exportovat</span>
         </Button>
         {csvData && (
           <CSVLink
             data={csvData}
-            filename={fileNameRef.current.value ? fileNameRef.current.value : "data"}
+            filename={
+              fileNameRef.current.value ? fileNameRef.current.value : "data"
+            }
             separator={","}
             style={{ visibility: "hidden" }}
             ref={csvLink}

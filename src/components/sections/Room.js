@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState } from "react";
 import Carousel from "react-grid-carousel";
 import ValueBubble from "../ui/ValueBubble";
 
@@ -10,8 +10,31 @@ import classes from "./Sections.module.css";
 
 import { FaTemperatureHigh } from "react-icons/fa";
 import { WiHumidity } from "react-icons/wi";
+import { useEffect } from "react";
+
+import axios from "axios";
 
 const Room = (props) => {
+  const [loadedStatistics, setLoadedStatistics] = useState({ data: [] });
+
+  useEffect(() => {
+    let incomingData;
+
+    axios
+      .get("http://localhost:8000/api/statistics/values/", {
+        params: {
+          room: props.data.name,
+        },
+      })
+      .then((res) => {
+        incomingData = res.data;
+        setLoadedStatistics({ data: incomingData });
+      })
+      .catch((err) => {
+        "error";
+      });
+  }, []);
+
   const devicesList = props.data.devices
     ?.sort((a, b) => Number(b.has_error) - Number(a.has_error))
     ?.sort((a, b) => Number(b.is_active) - Number(a.is_active))
@@ -50,7 +73,7 @@ const Room = (props) => {
             darkTheme={true}
           />
         </Col>
-        <Col className={classes.bubbleWrapper}>
+        <Col className={classes.bubbleWrapper} xl={5}>
           <ValueBubble
             valueType="Oxid uhličitý"
             icon={
@@ -63,28 +86,19 @@ const Room = (props) => {
             customStyle={{ borderColor: "var(--color-light-text)" }}
           />
         </Col>
-        <Col className={classes.bubbleWrapper}>
-          <ValueBubble
-            valueType="Oxid uhličitý"
-            icon={
-              <span style={{ fontWeight: "bold", fontSize: "1.3rem" }}>
-                CO2
-              </span>
-            }
-            unit={"ppm"}
-            value={""}
-            customStyle={{ borderColor: "var(--color-light-text)" }}
-          />
-        </Col>
       </Row>
       <Row className="h-25" style={{ padding: "1rem 0.6rem" }}>
-        <Carousel cols={4} rows={1} gap={17} loop={true}>
+        <Carousel cols={4} rows={1} gap={20} loop={true}>
           {devicesList}
         </Carousel>
       </Row>
       <Row className={`h-50`} style={{ padding: "0.3rem" }}>
         <Col className={classes.bubbleWrapper}>
-          {/* <StatisticBubble valueType="Spotřeba vody a elektřiny" /> */}
+          <StatisticBubble
+            valueType="Teplota a vlhkost v posledním týdnu"
+            dataKey={['vlhkost','teplota']}
+            data={loadedStatistics}
+          />
         </Col>
       </Row>
     </>

@@ -16,8 +16,7 @@ import {
 } from "recharts";
 
 const StatisticBubble = (props) => {
-
-
+  console.log(props.data.data);
 
   return (
     <div className={classes.bubble}>
@@ -65,16 +64,16 @@ const StatisticBubble = (props) => {
             <Tooltip />
             <Area
               type="monotone"
-              dataKey="voda"
-              stackId="1"
-              stroke="#8884d8"
+              dataKey={props.dataKey[0]}
+              stroke="var(--color-light-text)"
+              strokeWidth={2}
               fill="#8884d8"
             />
             <Area
               type="monotone"
-              dataKey="elektřina"
-              stackId="1"
-              stroke="#82ca9d"
+              dataKey={props.dataKey[1]}
+              stroke="var(--color-light-text)"
+              strokeWidth={2}
               fill="#82ca9d"
             />
           </AreaChart>

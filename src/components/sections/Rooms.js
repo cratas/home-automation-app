@@ -26,7 +26,6 @@ const Rooms = () => {
         setLoadedData({ data: incomingData });
         setCurrentRoom(incomingData[0].name);
         setIsLoaded(true);
-        console.log(incomingData);
       })
       .catch((err) => {
         "error";

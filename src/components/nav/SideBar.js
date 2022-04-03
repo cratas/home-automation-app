@@ -47,7 +47,7 @@ const SideBar = (props) => {
         </Link>
 
         <Link isActive={isExportActive} onClick={changeSection} id="4">
-          <BiExport size={20} className={classes.icon} />
+          <BiExport size={20} className={classes.icon} style={{marginTop: '-1px'}}/>
           <span className={classes.linkText}>Export</span>
         </Link>
       </div>

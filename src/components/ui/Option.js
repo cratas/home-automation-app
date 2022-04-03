@@ -39,7 +39,7 @@ MySelect.propTypes = {
 
 MySelect.defaultProps = {
   allOption: {
-    label: "Select all",
+    label: "Vybrat vše",
     value: "*",
   },
 };

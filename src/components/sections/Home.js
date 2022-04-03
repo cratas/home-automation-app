@@ -42,7 +42,6 @@ const Home = (props) => {
         "error";
       });
 
-
       
   }, []);
 
@@ -93,36 +92,23 @@ const Home = (props) => {
             <ValueBubble
               valueType="Vlhkost"
               icon={<WiHumidity size={50} />}
+              darkTheme={true}
               unit={"%"}
               value={loadedData.data.house_humidity}
               customStyle={{ borderColor: "var(--color-blue)" }}
             />
           </Col>
-          <Col className={classes.bubbleWrapper}>
+          <Col className={classes.bubbleWrapper} xl={5}>
             <ValueBubble
               valueType="Oxid uhličitý"
               icon={
-                <span style={{ fontWeight: "bold", fontSize: "1.3rem" }}>
+                <span style={{ fontWeight: "bold", fontSize: "1.3rem"}}>
                   CO2
                 </span>
               }
               unit={"ppm"}
               value={loadedData.data.house_co2}
               customStyle={{ borderColor: "var(--color-light-text)" }}
-            />
-          </Col>
-          <Col className={classes.bubbleWrapper}>
-            <ValueBubble
-              valueType="Oxid uhličitý"
-              icon={
-                <span style={{ fontWeight: "bold", fontSize: "1.3rem" }}>
-                  CO2
-                </span>
-              }
-              unit={"ppm"}
-              value={1283}
-              customStyle={{ borderColor: "var(--color-light-text)" }}
-              darkTheme={true}
             />
           </Col>
         </Row>
@@ -139,6 +125,7 @@ const Home = (props) => {
           <Col className={classes.bubbleWrapper}>
             <StatisticBubble
               data={loadedStatistics}
+              dataKey={['voda','elektřina']}
               valueType="Celková týdenní spotřeba"
             />
           </Col>
@@ -149,49 +136,4 @@ const Home = (props) => {
 };
 
 export default Home;
-
-// const loadedStatistics = [
-//   {
-//     name: "Po",
-//     voda: 4000,
-//     elektrina: 2400,
-//     plyn: 2400,
-//   },
-//   {
-//     name: "Út",
-//     voda: 3000,
-//     elektrina: 1398,
-//     plyn: 2210,
-//   },
-//   {
-//     name: "St",
-//     voda: 2000,
-//     elektrina: 9800,
-//     plyn: 2290,
-//   },
-//   {
-//     name: "Čt",
-//     voda: 2780,
-//     elektrina: 3908,
-//     plyn: 2000,
-//   },
-//   {
-//     name: "Pá",
-//     voda: 1890,
-//     elektrina: 4800,
-//     plyn: 2181,
-//   },
-//   {
-//     name: "So",
-//     voda: 2390,
-//     elektrina: 3800,
-//     plyn: 2500,
-//   },
-//   {
-//     name: "Ne",
-//     voda: 3490,
-//     elektrina: 4300,
-//     plyn: 2100,
-//   },
-// ];
 
