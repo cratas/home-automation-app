@@ -18,6 +18,7 @@ const Room = (props) => {
     .map((device) => (
       <Carousel.Item>
         <DeviceBubble
+          deviceId={device.identifier}
           deviceName={device.name}
           isActive={device.is_active}
           hasError={device.has_error}

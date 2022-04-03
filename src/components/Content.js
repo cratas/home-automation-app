@@ -29,7 +29,7 @@ const Content = () => {
 
       {section === 1 && <Home date={date}/> }
       {section === 2 && <Rooms /> }
-      {section === 3 && <Statistics /> }
+      {section === 3 && <Statistics date={date}/> }
       {section === 4 && <Export date={date}/> }
 
     </div>

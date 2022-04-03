@@ -48,7 +48,7 @@ const Rooms = () => {
   const roomsList = loadedData.data
     .map((room) => (
       <Carousel.Item style={{ height: "100%" }}>
-        <Room data={room} />
+        <Room data={room}/>
       </Carousel.Item>
     ));
 

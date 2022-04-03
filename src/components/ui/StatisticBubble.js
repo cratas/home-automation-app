@@ -16,6 +16,9 @@ import {
 } from "recharts";
 
 const StatisticBubble = (props) => {
+
+
+
   return (
     <div className={classes.bubble}>
       <div className={classes.titleWrapper}>
@@ -23,7 +26,7 @@ const StatisticBubble = (props) => {
       </div>
 
       <div className={classes.bubbleContent}>
-        <ResponsiveContainer width="95%" height="80%">
+        <ResponsiveContainer width="95%" height="90%">
           {/* <BarChart
             width={500}
             height={300}
@@ -55,12 +58,25 @@ const StatisticBubble = (props) => {
               bottom: 0,
             }}
           >
+            <Legend />
             <CartesianGrid vertical={false} stroke="#ebebeb" />
-            <XAxis interval={7} dataKey="day" />
+            <XAxis dataKey="day" />
             <YAxis />
             <Tooltip />
-            <Area type="monotone" dataKey="voda" stackId="1" stroke="#8884d8" fill="#8884d8" />
-            <Area type="monotone" dataKey="elektřina" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+            <Area
+              type="monotone"
+              dataKey="voda"
+              stackId="1"
+              stroke="#8884d8"
+              fill="#8884d8"
+            />
+            <Area
+              type="monotone"
+              dataKey="elektřina"
+              stackId="1"
+              stroke="#82ca9d"
+              fill="#82ca9d"
+            />
           </AreaChart>
         </ResponsiveContainer>
       </div>

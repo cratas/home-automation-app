@@ -37,7 +37,6 @@ const Home = (props) => {
       .then((res) => {
         incomingData = res.data;
         setLoadedStatistics({ data: incomingData });
-        setIsLoaded(true);
       })
       .catch((err) => {
         "error";
@@ -78,7 +77,7 @@ const Home = (props) => {
         </div>
       </div>
 
-      <div className={classes.contentWrapper} style={{ padding: "0.45rem" }}>
+      <div className={classes.contentWrapper} >
         <Row className={`h-25 ${classes.rowStyle} pb-1`}>
           <Col className={`${classes.bubbleWrapper}`}>
             <ValueBubble

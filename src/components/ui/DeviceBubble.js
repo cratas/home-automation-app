@@ -1,5 +1,6 @@
 import classes from "./Bubble.module.css";
 import { Form } from "react-bootstrap";
+import axios from "axios";
 
 import { useState } from "react";
 
@@ -13,24 +14,33 @@ const DeviceBubble = (props) => {
   const [isActive, setIsActive] = useState(props.isActive);
 
   var date;
-  if(props.lastTime !== null) {
+  if (props.lastTime !== null) {
     date = new Date(props.lastTime).toLocaleTimeString("cs-CZ", options);
   } else {
-    date = 'Není známo'
+    date = "Není známo";
   }
-
 
   const handeFormCheck = () => {
     setIsActive((oldState) => !oldState);
+
+    axios
+      .post("http://localhost:8000/api/device/status/", {
+        id: props.deviceId,
+        state: !isActive,
+      })
+      .then((res) => {
+        let incomingData = res.data;
+      })
+      .catch((e) => console.log(e));
   };
 
   var bubbleStyle;
   if (isActive && !props.hasError) {
-    bubbleStyle = `${classes.bubble} ${classes.activeDevice}`
-  } else if(!isActive && props.hasError) {
-    bubbleStyle = `${classes.bubble} ${classes.errorDevice}`
+    bubbleStyle = `${classes.bubble} ${classes.activeDevice}`;
+  } else if (!isActive && props.hasError) {
+    bubbleStyle = `${classes.bubble} ${classes.errorDevice}`;
   } else {
-    bubbleStyle = `${classes.bubble} ${classes.notActiveDevice}`
+    bubbleStyle = `${classes.bubble} ${classes.notActiveDevice}`;
   }
 
   return (
@@ -58,9 +68,7 @@ const DeviceBubble = (props) => {
       >
         <div className={`$(classes.statusWrapper) mt-5`}>
           {/* <MdOutlineMobileFriendly size={20} style={{ color: "green" }} /> */}
-          <h6>
-            Poslední aktualizace
-          </h6>
+          <h6>Poslední aktualizace</h6>
         </div>
         <div className={classes.statusWrapper}>
           {/* <MdOutlineMobileOff size={20} style={{ marginLeft: "1px" }} /> */}
@@ -68,7 +76,6 @@ const DeviceBubble = (props) => {
             <span style={{ fontWeight: "bold" }}>{date}</span>
           </h6>
         </div>
-
       </div>
     </div>
   );
