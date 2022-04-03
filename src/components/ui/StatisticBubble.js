@@ -1,6 +1,6 @@
 import classes from "./Bubble.module.css";
 
-import React, { PureComponent } from "react";
+import React, { useState } from "react";
 import {
   BarChart,
   Bar,
@@ -15,17 +15,32 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const StatisticBubble = (props) => {
-  console.log(props.data.data);
+import { Form } from "react-bootstrap";
 
+const StatisticBubble = (props) => {
   return (
     <div className={classes.bubble}>
       <div className={classes.titleWrapper}>
         <h6>{props.valueType}</h6>
+        {props.type && (
+          <div>
+            <Form.Select
+              aria-label="Default select example"
+              className={classes.choiceField}
+              value={props.type}
+              onChange={(e) => {
+                props.onChangeType(e.target.value);
+              }}
+            >
+              <option value="Týden">Týden</option>
+              <option value="Měsíc">Měsíc</option>
+            </Form.Select>
+          </div>
+        )}
       </div>
 
       <div className={classes.bubbleContent}>
-        <ResponsiveContainer width="95%" height="90%">
+        <ResponsiveContainer width="100%" height="95%">
           {/* <BarChart
             width={500}
             height={300}

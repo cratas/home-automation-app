@@ -38,18 +38,18 @@ const Statistics = (props) => {
       <div className={classes.contentWrapper} >
         <Row className={`h-50 pb-2`}>
           <Col className={`${classes.bubbleWrapper}`}>
-            <StatisticBubble
+            {/* <StatisticBubble
               data={"sdf"}
               valueType="Celková týdenní spotřeba"
-            />
+            /> */}
           </Col>
         </Row>
         <Row className={`h-50 pt-2`}>
           <Col className={`${classes.bubbleWrapper}`}>
-            <StatisticBubble
+            {/* <StatisticBubble
               data={"sdf"}
               valueType="Celková týdenní spotřeba"
-            />
+            /> */}
           </Col>
         </Row>
       </div>

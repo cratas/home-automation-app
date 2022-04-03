@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import Carousel from "react-grid-carousel";
 import ValueBubble from "../ui/ValueBubble";
 
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Spinner } from "react-bootstrap";
 import StatisticBubble from "../ui/StatisticBubble";
 import DeviceBubble from "../ui/DeviceBubble";
 
@@ -16,6 +16,32 @@ import axios from "axios";
 
 const Room = (props) => {
   const [loadedStatistics, setLoadedStatistics] = useState({ data: [] });
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [statisticsType, setStatisticsType] = useState("Týden");
+  
+
+  const handleTypeChange = (type) => {
+    setStatisticsType(type);
+    
+    const interval = type === "Týden" ? 7 : 30;
+    let incomingData;
+
+    axios
+    .get("http://localhost:8000/api/statistics/values/", {
+      params: {
+        room: props.data.name,
+        interval: interval,
+      },
+    })
+    .then((res) => {
+      incomingData = res.data;
+      setLoadedStatistics({ data: incomingData });
+      setIsLoaded(true);
+    })
+    .catch((err) => {
+      "error";
+    });
+  }
 
   useEffect(() => {
     let incomingData;
@@ -24,11 +50,13 @@ const Room = (props) => {
       .get("http://localhost:8000/api/statistics/values/", {
         params: {
           room: props.data.name,
+          interval: 7,
         },
       })
       .then((res) => {
         incomingData = res.data;
         setLoadedStatistics({ data: incomingData });
+        setIsLoaded(true);
       })
       .catch((err) => {
         "error";
@@ -94,11 +122,21 @@ const Room = (props) => {
       </Row>
       <Row className={`h-50`} style={{ padding: "0.3rem" }}>
         <Col className={classes.bubbleWrapper}>
-          <StatisticBubble
-            valueType="Teplota a vlhkost v posledním týdnu"
-            dataKey={['vlhkost','teplota']}
-            data={loadedStatistics}
-          />
+          {!isLoaded ? (
+            <div
+              className={classes.loaderWrapper}
+            >
+              <Spinner animation="border" />
+            </div>
+          ) : (
+            <StatisticBubble
+              valueType="Teplota a vlhkost"
+              dataKey={["vlhkost", "teplota"]}
+              data={loadedStatistics}
+              type={statisticsType}
+              onChangeType={handleTypeChange}
+            />
+          )}
         </Col>
       </Row>
     </>

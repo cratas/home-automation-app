@@ -122,6 +122,22 @@
   outline-offset: -4px;
 }
 
+.choiceField {
+  /* background-color: var(--color-orange); */
+  color: #000;
+  border: none;
+  border-radius: 1.2rem;
+  padding: 0.6rem 1rem;
+  width: 7rem;
+  font-weight: 600;
+}
+
+.choiceField:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+
 
 @media only screen and (max-width: 482px) {
   .contentWrapper {

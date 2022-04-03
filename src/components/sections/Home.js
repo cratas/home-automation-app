@@ -126,7 +126,7 @@ const Home = (props) => {
             <StatisticBubble
               data={loadedStatistics}
               dataKey={['voda','elektřina']}
-              valueType="Celková týdenní spotřeba"
+              valueType="Spotřeba za uplynulý měsíc"
             />
           </Col>
         </Row>
