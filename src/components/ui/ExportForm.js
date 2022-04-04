@@ -76,8 +76,8 @@ const ExportForm = (props) => {
         <Form.Label>
           <strong
             style={{
-              backgroundColor: "var(--color-blue)",
-              color: "#fff",
+              backgroundColor: "var(--color-platinum-dark)",
+              color: "#000",
               padding: "0.5rem 1rem",
               borderRadius: "10px",
               margin: "-0.6rem",
@@ -102,8 +102,8 @@ const ExportForm = (props) => {
         <Form.Label>
           <strong
             style={{
-              backgroundColor: "var(--color-blue)",
-              color: "#fff",
+              backgroundColor: "var(--color-platinum-dark)",
+              color: "#000",
               padding: "0.5rem 1rem",
               borderRadius: "10px",
               margin: "-0.6rem",
@@ -124,8 +124,8 @@ const ExportForm = (props) => {
         <Form.Label style={{ marginLeft: "0.8rem", marginBottom: "1rem" }}>
           <strong
             style={{
-              backgroundColor: "var(--color-blue)",
-              color: "#fff",
+              backgroundColor: "var(--color-platinum-dark)",
+              color: "#000",
               padding: "0.5rem 1rem",
               borderRadius: "10px",
               margin: "-0.6rem",
@@ -157,8 +157,8 @@ const ExportForm = (props) => {
         <Form.Label>
           <strong
             style={{
-              backgroundColor: "var(--color-blue)",
-              color: "#fff",
+              backgroundColor: "var(--color-platinum-dark)",
+              color: "#000",
               padding: "0.5rem 1rem",
               borderRadius: "10px",
               margin: "-0.6rem",

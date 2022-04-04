@@ -21,6 +21,10 @@
   color: var(--color-light-text);
 }
 
+.selectsWrapper {
+  display: flex;
+}
+
 .bubbleContent {
   display: flex;
   width: 100%;
@@ -128,26 +132,26 @@
 }
 
 .choiceField {
-  /* background-color: var(--color-orange); */
-  color: #000;
-  border: none !important;
-  border-radius: 1.2rem;
-  padding: 0.6rem 1rem;
-  width: 7rem;
+  color: var(--color-light-text);
+  border: none!important;
+  background-color: var(--color-platinum-dark);
+  width: 6.5rem;
+  border-radius: 1rem;
+  padding: 0.3rem 1rem;
   font-weight: 600;
   cursor: pointer;
 }
 
-.formCheck input[type=checkbox]:checked{
+.formCheck input[type="checkbox"]:checked {
   background-color: rgb(10, 10, 185);
   border: none;
 }
 
-.formCheck input[type=checkbox]{
+.formCheck input[type="checkbox"] {
   background-color: #fff;
 }
 
-.formCheck input[type=checkbox]:focus {
+.formCheck input[type="checkbox"]:focus {
   outline: none !important;
   box-shadow: none !important;
   border: none;
@@ -159,8 +163,14 @@
 }
 
 .choiceField:focus {
-  outline: none !important;
-  box-shadow: none !important;
+  outline: none!important;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px 0px,
+  rgba(0, 0, 0, 0.2) 0px 0px 1px 0px;
+}
+
+.choiceField:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px 0px,
+  rgba(0, 0, 0, 0.2) 0px 0px 1px 0px;
 }
 
 @media only screen and (max-width: 482px) {

@@ -30,6 +30,7 @@ const DeviceBubble = (props) => {
       })
       .then((res) => {
         let incomingData = res.data;
+        console.log(incomingData);
       })
       .catch((e) => console.log(e));
   };
