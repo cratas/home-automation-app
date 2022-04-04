@@ -3,25 +3,7 @@ import { useState, React, useEffect } from "react";
 import classes from "./Sections.module.css";
 import ExportForm from "../ui/ExportForm";
 
-
-import axios from "axios";
-
 const Export = (props) => {
-  const [loadedData, setLoadedData] = useState({ data: [] });
-
-  useEffect(() => {
-    let incomingData;
-
-    axios
-      .get("http://localhost:8000/api/export/")
-      .then((res) => {
-        incomingData = res.data;
-        setLoadedData({ data: incomingData });
-      })
-      .catch((err) => {
-        "error";
-      });
-  }, []);
 
   return (
     <div className={classes.sectionWrapper} style={{display: !props.visibility && 'none', padding : '0 0.14rem'}}>
@@ -37,7 +19,7 @@ const Export = (props) => {
       </div>
 
       <div className={`p-2 ${classes.contentWrapper} ${classes.exportWrapper}`}>
-        <ExportForm options={loadedData.data}/>
+        <ExportForm />
       </div>
     </div>
   );

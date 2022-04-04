@@ -58,7 +58,7 @@ const DynamicStatisticBubble = (props) => {
           <Form.Select
             aria-label="Default select example"
             className={classes.choiceField}
-            style={{ width: "19rem" , marginRight: '2rem'}}
+            style={{ width: "12rem" , marginRight: '2rem'}}
             onChange={(e) => {
               handleDeviceChange(e.target.value);
             }}
@@ -67,7 +67,7 @@ const DynamicStatisticBubble = (props) => {
           </Form.Select>
           <Form.Select
             aria-label="Default select example"
-            className={classes.choiceField}
+            className={`${classes.choiceField} ${classes.small}`}
             onChange={(e) => {
               handleTypeChange(e.target.value);
             }}

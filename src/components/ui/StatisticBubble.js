@@ -26,7 +26,7 @@ const StatisticBubble = (props) => {
           <div>
             <Form.Select
               aria-label="Default select example"
-              className={classes.choiceField}
+              className={`${classes.choiceField} ${classes.small}`}
               value={props.type}
               onChange={(e) => {
                 props.onChangeType(e.target.value);

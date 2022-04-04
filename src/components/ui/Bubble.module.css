@@ -132,29 +132,33 @@
 }
 
 .choiceField {
-  color: var(--color-light-text);
-  border: none!important;
-  background-color: var(--color-platinum-dark);
-  width: 6.5rem;
-  border-radius: 1rem;
-  padding: 0.3rem 1rem;
-  font-weight: 600;
-  cursor: pointer;
+  color: var(--color-light-text) !important;
+  border: none !important;
+  background-color: var(--color-platinum-dark) !important;
+  width: 18rem !important;
+  border-radius: 1rem !important;
+  padding: 0.3rem 1rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+
+.choiceField.small {
+  width: 6.5rem!important;
 }
 
 .formCheck input[type="checkbox"]:checked {
-  background-color: rgb(10, 10, 185);
-  border: none;
+  background-color: rgb(10, 10, 185) !important;
+  border: none !important;
 }
 
 .formCheck input[type="checkbox"] {
-  background-color: #fff;
+  background-color: #fff !important;
 }
 
 .formCheck input[type="checkbox"]:focus {
   outline: none !important;
   box-shadow: none !important;
-  border: none;
+  border: none !important;
 }
 
 .formCheck:focus {
@@ -163,14 +167,14 @@
 }
 
 .choiceField:focus {
-  outline: none!important;
+  outline: none !important;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px 0px,
-  rgba(0, 0, 0, 0.2) 0px 0px 1px 0px;
+    rgba(0, 0, 0, 0.2) 0px 0px 1px 0px !important;
 }
 
 .choiceField:hover {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px 0px,
-  rgba(0, 0, 0, 0.2) 0px 0px 1px 0px;
+    rgba(0, 0, 0, 0.2) 0px 0px 1px 0px !important;
 }
 
 @media only screen and (max-width: 482px) {

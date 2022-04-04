@@ -5,7 +5,7 @@ import buttonStyle from "../nav/SideBar.module.css";
 import { useEffect } from "react";
 import axios from "axios";
 
-import {BiExport} from 'react-icons/bi';
+import { BiExport } from "react-icons/bi";
 
 import { CSVLink } from "react-csv";
 
@@ -20,14 +20,24 @@ const ExportForm = (props) => {
   const csvLink = useRef();
 
   useEffect(() => {
+    let incomingData;
     let loadedOptions = [];
 
-    props.options.map((device) =>
-      loadedOptions.push({ value: device.id, label: device.name })
-    );
+    axios
+      .get("http://localhost:8000/api/export/")
+      .then((res) => {
+        incomingData = res.data;
 
-    setDeviceOptions(loadedOptions);
+        incomingData.map((device) =>
+          loadedOptions.push({ value: device.id, label: device.name })
+        );
+        setDeviceOptions(loadedOptions);
+      })
+      .catch((err) => {
+        "error";
+      });
   }, []);
+
 
   const handleSelectedDevice = (selected) => {
     setSelectedDevice(selected);
@@ -71,7 +81,7 @@ const ExportForm = (props) => {
   }, [csvData]);
 
   return (
-    <Form className="p-5 pt-4" onSubmit={handleSubmit}>
+    <Form className="p-4 pt-4" onSubmit={handleSubmit}>
       <Form.Group as={Row} style={{ padding: "0.5rem 0.9rem" }}>
         <Form.Label>
           <strong
@@ -196,7 +206,10 @@ const ExportForm = (props) => {
           className={buttonStyle.button}
           style={{ maxWidth: "12rem" }}
         >
-          <BiExport size={20} style={{marginTop: '-0.3rem', marginRight: '0.5rem'}}/>
+          <BiExport
+            size={20}
+            style={{ marginTop: "-0.3rem", marginRight: "0.5rem" }}
+          />
           <span>Exportovat</span>
         </Button>
         {csvData && (
