@@ -1,7 +1,7 @@
 import { React, useState, useRef, useEffect } from "react";
 
 import classes from "./Sections.module.css";
-import { Carousel, Spinner } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 
 import Room from "./Room";
 
@@ -9,12 +9,11 @@ import axios from "axios";
 
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
-const Rooms = () => {
+const Rooms = (props) => {
   const [index, setIndex] = useState(0);
   const ref = useRef(null);
   const [loadedData, setLoadedData] = useState({ data: [] });
   const [currentRoom, setCurrentRoom] = useState("");
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     let incomingData;
@@ -25,7 +24,6 @@ const Rooms = () => {
         incomingData = res.data;
         setLoadedData({ data: incomingData });
         setCurrentRoom(incomingData[0].name);
-        setIsLoaded(true);
       })
       .catch((err) => {
         "error";
@@ -51,12 +49,8 @@ const Rooms = () => {
       </Carousel.Item>
     ));
 
-  return !isLoaded ? (
-    <div className={`${classes.sectionWrapper} ${classes.spinnerWrapper}`}>
-      <Spinner animation="border" />
-    </div>
-  ) : (
-    <div className={classes.sectionWrapper}>
+  return (
+    <div className={classes.sectionWrapper} style={{display: !props.visibility && 'none'}}>
       <div className={classes.header}>
         <h5>
           <strong>Přehled místností v domě</strong>

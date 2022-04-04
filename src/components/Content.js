@@ -23,14 +23,16 @@ const Content = () => {
     setSection(parseInt(section_id));
   };
 
+
+
   return (
     <div className={`${classes.appWrapper}`}>
       <SideBar changeSection={handleChangeSection} currentSection={section}/>
 
-      {section === 1 && <Home date={date}/> }
-      {section === 2 && <Rooms /> }
-      {section === 3 && <Statistics date={date}/> }
-      {section === 4 && <Export date={date}/> }
+      <Home date={date} visibility={section === 1 ? true : false}/> 
+      <Rooms visibility={section === 2 ? true : false}/> 
+      <Statistics date={date} visibility={section === 3 ? true : false}/>
+      <Export date={date} visibility={section === 4 ? true : false}/>
 
     </div>
   );

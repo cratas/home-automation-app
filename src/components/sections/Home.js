@@ -59,12 +59,13 @@ const Home = (props) => {
       </Carousel.Item>
     ));
 
+
   return !isLoaded ? (
     <div className={`${classes.sectionWrapper} ${classes.spinnerWrapper}`}>
       <Spinner animation="border" />
     </div>
   ) : (
-    <div className={classes.sectionWrapper}>
+    <div className={classes.sectionWrapper} style={{display: !props.visibility && 'none'}}>
       <div className={classes.header}>
         <div className={classes.profile}>
           <span className={classes.name}>

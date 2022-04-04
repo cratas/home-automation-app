@@ -40,30 +40,8 @@ const StatisticBubble = (props) => {
       </div>
 
       <div className={classes.bubbleContent}>
-        <ResponsiveContainer width="100%" height="95%">
-          {/* <BarChart
-            width={500}
-            height={300}
-            data={props.data.data}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid vertical={false} stroke="#ebebeb"/>
-            <XAxis interval={7} dataKey="day"/>
-            <YAxis />
-            <Tooltip />
-            <Legend  />
-            <Bar dataKey="voda" fill="var(--color-blue)"/>
-            <Bar dataKey="elektřina" fill="var(--color-orange)" />
-
-          </BarChart> */}
+        <ResponsiveContainer width="100%" height="95%" >
           <AreaChart
-            width={500}
-            height={400}
             data={props.data.data}
             margin={{
               top: 10,

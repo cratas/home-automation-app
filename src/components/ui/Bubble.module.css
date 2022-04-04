@@ -2,7 +2,7 @@
   height: 100%;
   border-radius: 28px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
-  rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
   padding: 1rem;
   background-color: #fff;
   display: flex;
@@ -43,7 +43,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   color: var(--color-orange);
 }
 
@@ -74,8 +74,13 @@
 .darkBubble .iconWrapper {
   /* background-color: var(--color-orange); */
   background-color: var(--color-blue);
-  border: 5px solid #fff !important;
+  border: 5px solid var(--color-orange) !important;
   color: #fff;
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+  /* inline: 2px solid red; */
+  width: 6rem;
+  height: 6rem;
 }
 
 .darkBubble .rightSide {
@@ -99,7 +104,7 @@
 }
 
 .notActiveDevice {
-  background-color: rgb(202, 202, 202)
+  background-color: rgb(202, 202, 202);
 }
 
 .errorDevice {
@@ -125,19 +130,38 @@
 .choiceField {
   /* background-color: var(--color-orange); */
   color: #000;
-  border: none;
+  border: none !important;
   border-radius: 1.2rem;
   padding: 0.6rem 1rem;
   width: 7rem;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.formCheck input[type=checkbox]:checked{
+  background-color: rgb(10, 10, 185);
+  border: none;
+}
+
+.formCheck input[type=checkbox]{
+  background-color: #fff;
+}
+
+.formCheck input[type=checkbox]:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none;
+}
+
+.formCheck:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .choiceField:focus {
-  outline: none;
-  box-shadow: none;
+  outline: none !important;
+  box-shadow: none !important;
 }
-
-
 
 @media only screen and (max-width: 482px) {
   .contentWrapper {
@@ -153,8 +177,8 @@
     font-weight: 600;
     color: #000;
   }
-  
+
   .hidden {
-      display: none;
+    display: none;
   }
 }

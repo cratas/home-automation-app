@@ -54,6 +54,7 @@ const DeviceBubble = (props) => {
             id="custom-switch"
             checked={isActive}
             onChange={handeFormCheck}
+            className={classes.formCheck}
           />
         </Form>
       </div>
