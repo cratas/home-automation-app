@@ -10,7 +10,9 @@
     --color-platinum-dark: #ebebeb;
     --font-family:  'Montserrat', sans-serif;
     --color-orange-hover: #ff6600b9;
-    --color-graph-grey: rgb(192, 192, 192);
+    --color-graph-grey: rgb(147, 31, 177);
     --color-graph-blue: #0942ff;
     --color-light-text: rgba(24, 24, 24, 0.849);
+    --color-lighter-text: rgba(24, 24, 24, 0.63);
+
 }

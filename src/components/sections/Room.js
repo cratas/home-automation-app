@@ -17,7 +17,7 @@ import axios from "axios";
 const Room = (props) => {
   const [loadedStatistics, setLoadedStatistics] = useState({ data: [] });
   const [isLoaded, setIsLoaded] = useState(false);
-  const [statisticsType, setStatisticsType] = useState("Týden");
+  const [statisticsType, setStatisticsType] = useState("Měsíc");
   
 
   const handleTypeChange = (type) => {
@@ -50,7 +50,7 @@ const Room = (props) => {
       .get("http://localhost:8000/api/statistics/values/", {
         params: {
           room: props.data.name,
-          interval: 7,
+          interval: 30,
         },
       })
       .then((res) => {

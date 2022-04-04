@@ -51,7 +51,7 @@ const SideBar = (props) => {
           <span className={classes.linkText}>Export</span>
         </Link>
       </div>
-      <Button variant="primary" className={classes.button} >
+      <Button variant="primary" className={classes.button} onClick={props.logOutHandler} >
         <RiLogoutBoxLine size={20} />
         <span className={classes.linkText}>Odhlásit se</span>
       </Button>

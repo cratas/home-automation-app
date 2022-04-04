@@ -15,6 +15,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import randomColor from "randomcolor";
+
 import { Form } from "react-bootstrap";
 
 const StatisticBubble = (props) => {
@@ -32,15 +34,15 @@ const StatisticBubble = (props) => {
                 props.onChangeType(e.target.value);
               }}
             >
-              <option value="Týden">Týden</option>
               <option value="Měsíc">Měsíc</option>
+              <option value="Týden">Týden</option>
             </Form.Select>
           </div>
         )}
       </div>
 
       <div className={classes.bubbleContent}>
-        <ResponsiveContainer width="100%" height="95%" >
+        <ResponsiveContainer width="100%" height="95%">
           <AreaChart
             data={props.data.data}
             margin={{
@@ -50,7 +52,19 @@ const StatisticBubble = (props) => {
               bottom: 0,
             }}
           >
-            <Legend />
+            <Legend
+              formatter={(value, entry, index) => (
+                <span
+                  style={{
+                    color: "var(--color-light-text)",
+                    fontWeight: "bold",
+                    fontFamily: "var(--font-family)",
+                  }}
+                >
+                  {value}
+                </span>
+              )}
+            />
             <CartesianGrid vertical={false} stroke="#ebebeb" />
             <XAxis dataKey="day" />
             <YAxis />
@@ -60,14 +74,16 @@ const StatisticBubble = (props) => {
               dataKey={props.dataKey[0]}
               stroke="var(--color-light-text)"
               strokeWidth={2}
-              fill="#8884d8"
+              opacity={1}
+              fill={randomColor()}
             />
             <Area
               type="monotone"
               dataKey={props.dataKey[1]}
               stroke="var(--color-light-text)"
+              // opacity={1}
               strokeWidth={2}
-              fill="#82ca9d"
+              fill={randomColor()}
             />
           </AreaChart>
         </ResponsiveContainer>

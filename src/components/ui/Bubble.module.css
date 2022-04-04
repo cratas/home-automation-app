@@ -146,6 +146,10 @@
   width: 6.5rem!important;
 }
 
+.choiceField.medium {
+  width: 12rem!important;
+}
+
 .formCheck input[type="checkbox"]:checked {
   background-color: rgb(10, 10, 185) !important;
   border: none !important;
