@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import {
   BarChart,
   Bar,
-  Cell,
   Line,
   LineChart,
   XAxis,
@@ -21,11 +20,12 @@ import randomColor from "randomcolor";
 
 import { Form } from "react-bootstrap";
 
+import { AiOutlineWarning } from "react-icons/ai";
+
 const DynamicStatisticBubble = (props) => {
   const [loadedDevices, setloadedDevices] = useState([]);
   const [loadedStatistics, setLoadedStatistics] = useState([]);
   const [loadedHeaders, setLoadedHeaders] = useState([]);
-
   const [statisticsType, setStatisticsType] = useState("Měsíc");
   const [statisticsDevice, setStatisticsDevice] = useState();
   const [chartType, setChartType] = useState("AREA");
@@ -254,7 +254,14 @@ const DynamicStatisticBubble = (props) => {
 
       <div className={classes.bubbleContent}>
         <ResponsiveContainer width="100%" height="95%">
-          {chart}
+          {loadedStatistics.length === 0 ? (
+            <text className={classes.chartNoData}>
+              <AiOutlineWarning size={40} style={{color: 'var(--color-orange)'}}/>
+              Za uplynulý {statisticsType} nebyly naměřeny žádné hodnoty.
+            </text>
+          ) : (
+            chart
+          )}
         </ResponsiveContainer>
       </div>
     </div>
