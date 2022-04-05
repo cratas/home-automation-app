@@ -76,13 +76,11 @@
 }
 
 .darkBubble .iconWrapper {
-  /* background-color: var(--color-orange); */
   background-color: var(--color-blue);
-  border: 5px solid var(--color-orange) !important;
+  border: 2px solid #fff !important;
   color: #fff;
-  outline: 3px solid #fff;
-  outline-offset: 3px;
-  /* inline: 2px solid red; */
+  outline: 5px solid var(--color-orange);
+  box-shadow: #fff 0px 0px 0px 7px !important;
   width: 6rem;
   height: 6rem;
 }

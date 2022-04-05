@@ -10,7 +10,7 @@ const Statistics = (props) => {
     <div className={classes.sectionWrapper} style={{display: !props.visibility && 'none'}}>
       <div className={classes.header}>
         <h5>
-          <strong>Stastistiky naměřených hodnot</strong>
+          <strong>Vizualizace naměřených hodnot</strong>
         </h5>
         <div className={classes.date}>
           <span style={{ fontWeight: "bold" }}>{props.date}</span>
@@ -22,14 +22,14 @@ const Statistics = (props) => {
         <Row className={`h-50 pb-2`}>
           <Col className={`${classes.bubbleWrapper}`}>
             <DynamicStatisticBubble
-              valueType="Teplota a vlhkost"
+              valueType="Možnosti vizualizace"
             />
           </Col>
         </Row>
         <Row className={`h-50 pt-2`}>
           <Col className={`${classes.bubbleWrapper}`}>
             <DynamicStatisticBubble
-              valueType="Teplota a vlhkost"
+              valueType="Možnosti vizualizace"
             />
           </Col>
         </Row>

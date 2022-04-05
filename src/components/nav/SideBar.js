@@ -43,7 +43,7 @@ const SideBar = (props) => {
 
         <Link isActive={isStatisticsActive} onClick={changeSection} id="3">
           <MdQueryStats size={20} className={classes.icon} />
-          <span className={classes.linkText}>Statistiky</span>
+          <span className={classes.linkText}>Vizualizace</span>
         </Link>
 
         <Link isActive={isExportActive} onClick={changeSection} id="4">
