@@ -8,11 +8,12 @@
     --color-orange: #FF6700;
     --color-platinum: #f3f3f3;
     --color-platinum-dark: #ebebeb;
+    --color-platinum-extra-dark: #e2e2e2;
     --font-family:  'Montserrat', sans-serif;
     --color-orange-hover: #ff6600b9;
-    --color-graph-grey: rgb(158, 158, 158);
+    --color-graph-grey: rgba(155, 155, 155, 0.808);
     --color-graph-blue: #0942ff;
     --color-light-text: rgba(24, 24, 24, 0.849);
     --color-lighter-text: rgba(24, 24, 24, 0.63);
-
+    --color-devices-wrapper: rgb(126, 119, 189);
 }

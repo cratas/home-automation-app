@@ -5,6 +5,7 @@ import ValueBubble from "../ui/ValueBubble";
 import { Row, Col, Spinner } from "react-bootstrap";
 import StatisticBubble from "../ui/StatisticBubble";
 import DeviceBubble from "../ui/DeviceBubble";
+import SmartDeviceBubble from "../ui/SmartDeviceBubble";
 
 import classes from "./Sections.module.css";
 
@@ -18,30 +19,29 @@ const Room = (props) => {
   const [loadedStatistics, setLoadedStatistics] = useState({ data: [] });
   const [isLoaded, setIsLoaded] = useState(false);
   const [statisticsType, setStatisticsType] = useState("Měsíc");
-  
 
   const handleTypeChange = (type) => {
     setStatisticsType(type);
-    
+
     const interval = type === "Týden" ? 7 : 30;
     let incomingData;
 
     axios
-    .get("http://localhost:8000/api/statistics/values/", {
-      params: {
-        room: props.data.name,
-        interval: interval,
-      },
-    })
-    .then((res) => {
-      incomingData = res.data;
-      setLoadedStatistics({ data: incomingData });
-      setIsLoaded(true);
-    })
-    .catch((err) => {
-      "error";
-    });
-  }
+      .get("http://localhost:8000/api/statistics/values/", {
+        params: {
+          room: props.data.name,
+          interval: interval,
+        },
+      })
+      .then((res) => {
+        incomingData = res.data;
+        setLoadedStatistics({ data: incomingData });
+        setIsLoaded(true);
+      })
+      .catch((err) => {
+        "error";
+      });
+  };
 
   useEffect(() => {
     let incomingData;
@@ -121,11 +121,9 @@ const Room = (props) => {
         </Carousel>
       </Row>
       <Row className={`h-50`} style={{ padding: "0.3rem" }}>
-        <Col className={classes.bubbleWrapper}>
+        <Col className={classes.bubbleWrapper} xl={9}>
           {!isLoaded ? (
-            <div
-              className={classes.loaderWrapper}
-            >
+            <div className={classes.loaderWrapper}>
               <Spinner animation="border" />
             </div>
           ) : (
@@ -137,6 +135,9 @@ const Room = (props) => {
               onChangeType={handleTypeChange}
             />
           )}
+        </Col>
+        <Col className={classes.bubbleWrapper} xl={3}>
+          <SmartDeviceBubble />
         </Col>
       </Row>
     </>

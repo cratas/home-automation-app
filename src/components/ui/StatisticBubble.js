@@ -15,6 +15,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import { AiOutlineWarning } from "react-icons/ai";
+
 import randomColor from "randomcolor";
 
 import { Form } from "react-bootstrap";
@@ -43,6 +45,12 @@ const StatisticBubble = (props) => {
 
       <div className={classes.bubbleContent}>
         <ResponsiveContainer width="100%" height="95%">
+        {props.data.data.length === 0 ? (
+            <text className={classes.chartNoData}>
+              <AiOutlineWarning size={40} style={{color: 'var(--color-orange)'}}/>
+              Nebyly naměřeny žádné hodnoty.
+            </text>
+          ) : (
           <AreaChart
             data={props.data.data}
             margin={{
@@ -85,7 +93,7 @@ const StatisticBubble = (props) => {
               strokeWidth={2}
               fill={randomColor()}
             />
-          </AreaChart>
+          </AreaChart>)}
         </ResponsiveContainer>
       </div>
     </div>

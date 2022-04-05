@@ -106,7 +106,7 @@
 }
 
 .notActiveDevice {
-  background-color: rgb(202, 202, 202);
+  background-color: var(--color-platinum-extra-dark);
 }
 
 .errorDevice {
@@ -141,11 +141,11 @@
 }
 
 .choiceField.small {
-  width: 6.5rem!important;
+  width: 6.5rem !important;
 }
 
 .choiceField.medium {
-  width: 12rem!important;
+  width: 12rem !important;
 }
 
 .formCheck input[type="checkbox"]:checked {
@@ -155,12 +155,12 @@
 
 .formCheck input[type="checkbox"] {
   background-color: #fff !important;
+  cursor: pointer;
 }
 
 .formCheck input[type="checkbox"]:focus {
   outline: none !important;
   box-shadow: none !important;
-  border: none !important;
 }
 
 .formCheck:focus {
@@ -187,6 +187,52 @@
   height: 100%;
   color: var(--color-light-text);
   font-weight: 500;
+}
+
+.smartDeviceContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.smartDeviceItem {
+  width: 100%;
+  border: 2px solid var(--color-platinum-dark);
+  padding: 0.5rem 0.5rem;
+  margin-top: 1.1rem;
+  border-radius: 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.smartDeviceItem.active {
+  background-color: var(--color-platinum-dark);
+}
+
+.smartDeviceItem span {
+  color: var(--color-graph-grey);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-left: 5px;
+}
+
+.smartDeviceItem.active span {
+  font-weight: 500;
+  color: var(--color-light-text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-left: 5px;
+}
+
+.smartDeviceIcon {
+  color: var(--color-graph-grey);
+}
+
+.smartDeviceItem.active .smartDeviceIcon {
+  color: var(--color-orange);
 }
 
 @media only screen and (max-width: 482px) {
