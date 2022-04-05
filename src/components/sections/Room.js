@@ -67,8 +67,9 @@ const Room = (props) => {
     ?.sort((a, b) => Number(b.has_error) - Number(a.has_error))
     ?.sort((a, b) => Number(b.is_active) - Number(a.is_active))
     .map((device) => (
-      <Carousel.Item>
+      <Carousel.Item key={device.identifier}>
         <DeviceBubble
+          key={device.identifier + '1'}
           deviceId={device.identifier}
           deviceName={device.name}
           isActive={device.is_active}
@@ -137,7 +138,7 @@ const Room = (props) => {
           )}
         </Col>
         <Col className={classes.bubbleWrapper} xl={3}>
-          <SmartDeviceBubble />
+          <SmartDeviceBubble smartDevicesData={props.data.smart_devices} />
         </Col>
       </Row>
     </>

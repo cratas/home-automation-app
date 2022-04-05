@@ -6,18 +6,17 @@ import {
   MdReportGmailerrorred,
 } from "react-icons/md";
 
-
-
 const RoomBubble = (props) => {
-
-
-
   var bubbleStyle;
   if (props.errorCount > 0) {
     bubbleStyle = `${classes.bubble} ${classes.errorRoom}`;
   } else if (props.activeCount > 0 && props.errorCount === 0) {
     bubbleStyle = `${classes.bubble} ${classes.activeRoom}`;
-  } else if (props.nonActiveCount > 0 && props.activeCount === 0 && props.errorCount === 0) {
+  } else if (
+    props.nonActiveCount > 0 &&
+    props.activeCount === 0 &&
+    props.errorCount === 0
+  ) {
     bubbleStyle = `${classes.bubble} ${classes.notActiveRoom}`;
   }
 

@@ -44,8 +44,8 @@ const Rooms = (props) => {
 
   const roomsList = loadedData.data
     .map((room) => (
-      <Carousel.Item style={{ height: "100%" }}>
-        <Room data={room}/>
+      <Carousel.Item style={{ height: "100%" }} key={room.name}>
+        <Room data={room} key={room.name + '1'}/>
       </Carousel.Item>
     ));
 

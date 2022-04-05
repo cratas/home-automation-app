@@ -95,7 +95,11 @@ const DynamicStatisticBubble = (props) => {
   }, []);
 
   const deviceSelect = loadedDevices.map((device) => (
-    <option value={device.id} style={{ textAlign: "left" }}>
+    <option
+      value={device.id}
+      style={{ textAlign: "left" }}
+      key={device.id + "1"}
+    >
       {device.name}
     </option>
   ));
@@ -131,6 +135,7 @@ const DynamicStatisticBubble = (props) => {
         <Tooltip />
         {loadedHeaders.map((value) => (
           <Area
+            key={value + "1"}
             type="monotone"
             dataKey={value}
             strokeWidth={2}
@@ -171,6 +176,7 @@ const DynamicStatisticBubble = (props) => {
         />
         {loadedHeaders.map((value) => (
           <Line
+            key={value + "1"}
             type="monotone"
             dataKey={value}
             strokeWidth={2}
@@ -209,7 +215,7 @@ const DynamicStatisticBubble = (props) => {
           )}
         />
         {loadedHeaders.map((value) => (
-          <Bar dataKey={value} fill={randomColor()} />
+          <Bar key={value + "1"} dataKey={value} fill={randomColor()} />
         ))}
       </BarChart>
     );
@@ -256,7 +262,10 @@ const DynamicStatisticBubble = (props) => {
         <ResponsiveContainer width="100%" height="95%">
           {loadedStatistics.length === 0 ? (
             <text className={classes.chartNoData}>
-              <AiOutlineWarning size={40} style={{color: 'var(--color-orange)'}}/>
+              <AiOutlineWarning
+                size={40}
+                style={{ color: "var(--color-orange)" }}
+              />
               Za uplynulý {statisticsType} nebyly naměřeny žádné hodnoty.
             </text>
           ) : (

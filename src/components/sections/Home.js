@@ -49,8 +49,9 @@ const Home = (props) => {
     ?.sort((a, b) => b.active_count - a.active_count)
     ?.sort((a, b) => b.error_count - a.error_count)
     ?.map((room) => (
-      <Carousel.Item>
+      <Carousel.Item key={room.name + '2'}>
         <RoomBubble
+          key={room.name + '3'}
           valueType={room.name}
           activeCount={room.active_count}
           nonActiveCount={room.non_active_count}
