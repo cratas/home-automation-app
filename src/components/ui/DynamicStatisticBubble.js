@@ -223,7 +223,7 @@ const DynamicStatisticBubble = (props) => {
 
   return (
     <div className={classes.bubble}>
-      <div className={classes.titleWrapper}>
+      <div className={classes.titleWrapper} style={{overflowY: 'hidden', overflowX: 'auto'}}>
         <h6>{props.valueType}</h6>
         <div className={classes.selectsWrapper}>
           <Form.Select

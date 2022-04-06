@@ -115,7 +115,7 @@ const Home = (props) => {
           </Col>
         </Row>
         <Row
-          className={`h-25 ${classes.rowStyle}`}
+          className={`h-25`}
           style={{ padding: "1rem 0.3rem" }}
         >
           <Carousel cols={4} rows={1} gap={17} loop={true}>
@@ -123,7 +123,7 @@ const Home = (props) => {
           </Carousel>
         </Row>
 
-        <Row className={`h-50 ${classes.rowStyle} pt-2`}>
+        <Row className={`h-50 ${classes.rowStyle}`}>
           <Col className={classes.bubbleWrapper}>
             <StatisticBubble
               data={loadedStatistics}

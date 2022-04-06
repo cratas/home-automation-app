@@ -81,7 +81,7 @@ const Room = (props) => {
 
   return (
     <>
-      <Row className="h-25" style={{ padding: "0.3rem" }}>
+      <Row className={`h-25 ${classes.rowStyle} pb-1`} style={{ padding: "0.3rem" }} >
         <Col className={`${classes.bubbleWrapper}`}>
           <ValueBubble
             valueType="Teplota"
@@ -121,7 +121,7 @@ const Room = (props) => {
           {devicesList}
         </Carousel>
       </Row>
-      <Row className={`h-50`} style={{ padding: "0.3rem" }}>
+      <Row className={`h-50 ${classes.rowStyle}`} style={{ padding: "0.3rem" }}>
         <Col className={classes.bubbleWrapper} xl={9}>
           {!isLoaded ? (
             <div className={classes.loaderWrapper}>

@@ -25,7 +25,7 @@ const StatisticBubble = (props) => {
   return (
     <div className={classes.bubble}>
       <div className={classes.titleWrapper}>
-        <h6>{props.valueType}</h6>
+        <h6 >{props.valueType}</h6>
         {props.type && (
           <div>
             <Form.Select

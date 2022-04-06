@@ -235,7 +235,7 @@
   color: var(--color-orange);
 }
 
-@media only screen and (max-width: 482px) {
+@media only screen and (max-width: 1200px) {
   .contentWrapper {
     flex-direction: column;
     justify-content: flex-start;
@@ -248,9 +248,25 @@
     font-size: 1.5rem;
     font-weight: 600;
     color: #000;
+    margin: 0;
   }
 
   .hidden {
     display: none;
+  }
+  .iconWrapper {
+    width: 5rem;
+    height: 5rem;
+  }
+  .darkBubble .iconWrapper {
+    width: 4rem;
+    height: 4rem;
+  }
+  .rightSide {
+    margin-left: 1rem;
+  }
+
+  .bubble {
+    height: 90%;
   }
 }

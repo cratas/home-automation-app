@@ -123,7 +123,7 @@
   justify-content: space-between;
 }
 
-@media only screen and (max-width: 482px) {
+@media only screen and (max-width: 1200px) {
   .sectionWrapper {
     margin: 0;
     width: 100%;
@@ -135,5 +135,24 @@
 
   .roomWrapper {
     height: 75vh;
+  }
+
+  .rowStyle {
+    display: flex;
+    align-items: center;
+    overflow: scroll;
+  }
+
+  .header {
+    padding-top: 0.5rem;
+    padding-bottom: 0.2rem;
+    align-items: flex-start;
+    overflow: scroll;
+  }
+  .name {
+    font-size: 1rem;
+  }
+  .date {
+    font-size: 0.9rem;
   }
 }
