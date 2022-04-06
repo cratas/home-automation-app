@@ -1,9 +1,10 @@
-import classes from "./Bubble.module.css";
 import { Form } from "react-bootstrap";
 import { useState } from "react";
 
 import { FaRegLightbulb } from "react-icons/fa";
 import { RiWindyFill, RiFireLine } from "react-icons/ri";
+
+import classes from "./Bubble.module.css";
 
 import axios from "axios";
 

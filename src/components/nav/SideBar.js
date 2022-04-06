@@ -1,24 +1,27 @@
 import React from "react";
 
-import classes from "./SideBar.module.css";
-
-import { Button } from "react-bootstrap";
-
-import { RiHomeWifiLine } from "react-icons/ri";
+import { RiHomeWifiLine, RiLogoutBoxLine } from "react-icons/ri";
 import { MdQueryStats } from "react-icons/md";
-import {  MdOutlineSpaceDashboard } from "react-icons/md";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { SiHomeassistant } from "react-icons/si";
-import { RiLogoutBoxLine } from "react-icons/ri";
 import { BiExport } from "react-icons/bi";
 
+import { Button } from "react-bootstrap";
 import Link from "./Link";
 
+import classes from "./SideBar.module.css";
+
+// side bar components with navigation menu
 const SideBar = (props) => {
+
+  // change section hander switching between sections,
+  // call parents function for switch between section
   const changeSection = (e) => {
     const section = e.currentTarget.id;
     props.changeSection(section);
   };
 
+  // variables indicates active section link style
   const isHomeActive = props.currentSection === 1 ? true : false;
   const isRoomsActive = props.currentSection === 2 ? true : false;
   const isStatisticsActive = props.currentSection === 3 ? true : false;
@@ -26,10 +29,13 @@ const SideBar = (props) => {
 
   return (
     <div className={`${classes.sideBar}`}>
+      {/* rendering logo  */}
       <div className={classes.logo}>
         <SiHomeassistant size={40} />
         <p className='mt-1'>Smart home</p>
       </div>
+
+      {/* rendering list of links */}
       <div className={classes.links}>
         <Link isActive={isHomeActive} onClick={changeSection} id="1">
           <MdOutlineSpaceDashboard size={20} className={classes.icon}/>
@@ -51,6 +57,8 @@ const SideBar = (props) => {
           <span className={classes.linkText}>Export</span>
         </Link>
       </div>
+
+      {/* rendering button for logout */}
       <Button variant="primary" className={classes.button} onClick={props.logOutHandler} >
         <RiLogoutBoxLine size={20} />
         <span className={classes.linkText}>Odhlásit se</span>

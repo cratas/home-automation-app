@@ -140,7 +140,6 @@ const DynamicStatisticBubble = (props) => {
             dataKey={value}
             strokeWidth={2}
             stroke="var(--color-light-text)"
-            // strokeOpacity="1"
             fill={randomColor()}
           />
         ))}
@@ -223,7 +222,10 @@ const DynamicStatisticBubble = (props) => {
 
   return (
     <div className={classes.bubble}>
-      <div className={classes.titleWrapper} style={{overflowY: 'hidden', overflowX: 'auto'}}>
+      <div
+        className={classes.titleWrapper}
+        style={{ overflowY: "hidden", overflowX: "auto" }}
+      >
         <h6>{props.valueType}</h6>
         <div className={classes.selectsWrapper}>
           <Form.Select

@@ -18,9 +18,7 @@ const SmartDeviceBubble = (props) => {
       <div className={classes.titleWrapper}>
         <h6>Chytra zařízení</h6>
       </div>
-      <div className={classes.smartDeviceContent}>
-        {smartDevicesItems}
-      </div>
+      <div className={classes.smartDeviceContent}>{smartDevicesItems}</div>
     </div>
   );
 };

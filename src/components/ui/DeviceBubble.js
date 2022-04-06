@@ -69,11 +69,9 @@ const DeviceBubble = (props) => {
         }}
       >
         <div className={`$(classes.statusWrapper) mt-5`}>
-          {/* <MdOutlineMobileFriendly size={20} style={{ color: "green" }} /> */}
           <h6>Poslední aktualizace</h6>
         </div>
         <div className={classes.statusWrapper}>
-          {/* <MdOutlineMobileOff size={20} style={{ marginLeft: "1px" }} /> */}
           <h6>
             <span style={{ fontWeight: "bold" }}>{date}</span>
           </h6>

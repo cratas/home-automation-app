@@ -38,7 +38,6 @@ const ExportForm = (props) => {
       });
   }, []);
 
-
   const handleSelectedDevice = (selected) => {
     setSelectedDevice(selected);
   };

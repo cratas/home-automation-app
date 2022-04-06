@@ -1,9 +1,7 @@
-import {React} from 'react';
+import { React } from "react";
 
-const LoginForm = props => {
-    return <div >
-        Login form logic
-    </div>
-}
+const LoginForm = (props) => {
+  return <div>Login form logic</div>;
+};
 
 export default LoginForm;

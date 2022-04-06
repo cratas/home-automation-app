@@ -79,8 +79,6 @@
   box-shadow: none !important;
 }
 
-
-
 @media only screen and (max-width: 1200px) {
   .linkText {
     display: none;
