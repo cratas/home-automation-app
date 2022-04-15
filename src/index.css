@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Epilogue&family=Montserrat:wght@300;400;500;600;700;800&family=Source+Code+Pro&display=swap');
 
 :root {
-    /* background-color: #dfdfdf; */
-    background-color: white;
+    background-color: #dfdfdf;
+    /* background-color: white; */
     --color-blue: #3B0AAE;
     --color-gas: #919191;
     --color-orange: #FF6700;
